@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiss Dialects - Digital Preservation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Component -->
+    <div id="navigation"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Title Section Component -->
+        <div id="title-section"></div>
+
+        <!-- Map Section Component -->
+        <div id="map-section"></div>
+
+        <!-- App Store Badges Component -->
+        <div id="app-badges"></div>
+
+        <!-- Info Grid Component -->
+        <div id="info-grid"></div>
+
+        <!-- Features Component -->
+        <div id="features"></div>
+
+        <!-- How It Works Component -->
+        <div id="how-it-works"></div>
+
+        <!-- Use Cases Component -->
+        <div id="use-cases"></div>
+
+        <!-- Social Proof Component -->
+        <div id="social-proof"></div>
+
+        <!-- CTA Section Component -->
+        <div id="cta-section"></div>
+    </main>
+
+    <!-- Load components -->
+    <script>
+        // Function to load HTML component
+        async function loadComponent(elementId, componentPath) {
+            try {
+                const response = await fetch(componentPath);
+                const html = await response.text();
+                document.getElementById(elementId).innerHTML = html;
+            } catch (error) {
+                console.error(`Error loading component ${componentPath}:`, error);
+            }
+        }
+
+        // Load all components
+        async function loadAllComponents() {
+            await Promise.all([
+                loadComponent('navigation', 'components/navigation.html'),
+                loadComponent('title-section', 'components/title-section.html'),
+                loadComponent('map-section', 'components/map-section.html'),
+                loadComponent('app-badges', 'components/app-badges.html'),
+                loadComponent('info-grid', 'components/info-grid.html'),
+                loadComponent('features', 'components/features.html'),
+                loadComponent('how-it-works', 'components/how-it-works.html'),
+                loadComponent('use-cases', 'components/use-cases.html'),
+                loadComponent('social-proof', 'components/social-proof.html'),
+                loadComponent('cta-section', 'components/cta-section.html')
+            ]);
+
+            // After components are loaded, load and initialize the main script
+            const script = document.createElement('script');
+            script.src = 'script.js';
+            document.body.appendChild(script);
+        }
+
+        // Initialize
+        loadAllComponents();
+    </script>
+</body>
+</html>

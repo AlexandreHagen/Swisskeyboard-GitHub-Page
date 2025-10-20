@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NZZ - Schweizerdeutsch Autokorrekt</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: #fff;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        /* NZZ Editorial Header */
+        .nzz-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-bottom: 3px double #000;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .nzz-masthead {
+            padding: 12px 0;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .nzz-logo {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .nzz-tagline {
+            font-size: 11px;
+            color: #666;
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Editorial Navigation */
+        .nzz-nav {
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+            background: #fafafa;
+        }
+
+        .nav-item {
+            position: relative;
+            padding: 12px 16px;
+            font-size: 13px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: #f0f0f0;
+            border-bottom-color: #c41230;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            min-width: 220px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 1px solid #ddd;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            padding: 10px 16px;
+            font-size: 13px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background: #f8f8f8;
+            padding-left: 20px;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 120px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .article-header {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .article-title {
+            font-size: 36px;
+            line-height: 1.2;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .article-lead {
+            font-size: 18px;
+            color: #444;
+            font-style: italic;
+        }
+
+        .article-meta {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #666;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        /* Swiss Map Container */
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            margin: 30px 0;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .canton {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .canton path {
+            stroke: #666;
+            stroke-width: 0.5;
+            fill: #e8e8e8;
+            transition: all 0.3s;
+        }
+
+        .canton:hover path {
+            fill: #c41230;
+            fill-opacity: 0.8;
+        }
+
+        .canton.active path {
+            fill: #c41230;
+            stroke: #000;
+            stroke-width: 1.5;
+        }
+
+        .canton-label {
+            pointer-events: none;
+            font-size: 10px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 600;
+            fill: #333;
+        }
+
+        /* iOS Autocomplete */
+        .autocomplete-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 420px;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .autocomplete-bar {
+            display: flex;
+            gap: 8px;
+            padding: 8px 0;
+            margin-bottom: 8px;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s;
+        }
+
+        .autocomplete-bar.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .suggestion-pill {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 18px;
+            padding: 8px 16px;
+            font-size: 15px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            animation: pillSlide 0.3s ease;
+        }
+
+        .suggestion-pill.center {
+            background: #f0f0f0;
+            font-weight: 600;
+        }
+
+        .message-input {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 12px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .typing-text {
+            font-size: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 24px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 20px;
+            background: #007AFF;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        @keyframes pillSlide {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(5px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Canton info panel */
+        .canton-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: #fff;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 13px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .canton-info.show {
+            opacity: 1;
+        }
+
+        .canton-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .canton-dialect {
+            color: #666;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- NZZ Editorial Header -->
+    <header class="nzz-header">
+        <div class="nzz-masthead">
+            <div class="nzz-logo">NZZ</div>
+            <div class="nzz-tagline">Neue Zürcher Zeitung · Seit 1780</div>
+        </div>
+        <nav class="nzz-nav">
+            <div class="nav-item">
+                International
+                <div class="dropdown">
+                    <div class="dropdown-item">Politik</div>
+                    <div class="dropdown-item">Wirtschaft</div>
+                    <div class="dropdown-item">Gesellschaft</div>
+                    <div class="dropdown-item">Amerika</div>
+                    <div class="dropdown-item">Asien</div>
+                </div>
+            </div>
+            <div class="nav-item">
+                Schweiz
+                <div class="dropdown">
+                    <div class="dropdown-item">Politik</div>
+                    <div class="dropdown-item">Zürich</div>
+                    <div class="dropdown-item">Bern</div>
+                    <div class="dropdown-item">Basel</div>
+                    <div class="dropdown-item">Romandie</div>
+                </div>
+            </div>
+            <div class="nav-item">
+                Wirtschaft
+                <div class="dropdown">
+                    <div class="dropdown-item">Börse</div>
+                    <div class="dropdown-item">Unternehmen</div>
+                    <div class="dropdown-item">Konjunktur</div>
+                    <div class="dropdown-item">Fintech</div>
+                </div>
+            </div>
+            <div class="nav-item">
+                Technologie
+                <div class="dropdown">
+                    <div class="dropdown-item">KI & Automation</div>
+                    <div class="dropdown-item">Digital</div>
+                    <div class="dropdown-item">Wissenschaft</div>
+                    <div class="dropdown-item">Innovation</div>
+                </div>
+            </div>
+            <div class="nav-item">
+                Feuilleton
+                <div class="dropdown">
+                    <div class="dropdown-item">Literatur</div>
+                    <div class="dropdown-item">Kunst</div>
+                    <div class="dropdown-item">Film</div>
+                    <div class="dropdown-item">Musik</div>
+                </div>
+            </div>
+            <div class="nav-item">
+                Meinung
+                <div class="dropdown">
+                    <div class="dropdown-item">Kommentare</div>
+                    <div class="dropdown-item">Kolumnen</div>
+                    <div class="dropdown-item">Gastbeiträge</div>
+                    <div class="dropdown-item">Leserbriefe</div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <article>
+            <header class="article-header">
+                <h1 class="article-title">Die Zukunft der Schweizer Dialekte im digitalen Zeitalter</h1>
+                <p class="article-lead">Ein innovatives Autokorrektur-System bewahrt die sprachliche Vielfalt der Schweiz</p>
+                <div class="article-meta">
+                    Von der Redaktion · 14. Oktober 2025 · Technologie
+                </div>
+            </header>
+
+            <div class="map-container">
+                <svg viewBox="0 0 1000 700" id="swissMap">
+                    <!-- Map will be populated by JavaScript -->
+                </svg>
+
+                <!-- Autocomplete UI -->
+                <div class="autocomplete-container" id="autocompleteContainer">
+                    <div class="autocomplete-bar" id="autocompleteBar"></div>
+                    <div class="message-input">
+                        <div class="typing-text">
+                            <span id="typedText"></span>
+                            <span class="cursor"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Canton Info Panel -->
+                <div class="canton-info" id="cantonInfo">
+                    <div class="canton-name" id="cantonName"></div>
+                    <div class="canton-dialect" id="cantonDialect"></div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        // Swiss canton GeoJSON data (simplified for example - using approximate paths)
+        const CANTONS = {
+            "ZH": {
+                name: "Zürich",
+                path: "M 600,200 L 650,190 L 680,210 L 670,250 L 630,260 L 590,240 Z",
+                center: [630, 225],
+                suggestions: [
+                    { words: ["Ich", "gang", "go"], options: [["Ich", "I", "Ig"], ["gang", "gange", "gah"], ["poschte", "schaffe", "chrömle"]] }
+                ]
+            },
+            "BE": {
+                name: "Bern",
+                path: "M 450,250 L 550,240 L 580,300 L 570,380 L 500,400 L 420,390 L 400,340 L 410,280 Z",
+                center: [490, 320],
+                suggestions: [
+                    { words: ["Das", "isch", "gäng"], options: [["Das", "Ds", "S'"], ["isch", "esch", "sy"], ["gäng", "immer", "allpott"]] }
+                ]
+            },
+            "LU": {
+                name: "Luzern",
+                path: "M 580,280 L 620,275 L 640,300 L 630,330 L 600,340 L 570,320 Z",
+                center: [605, 305],
+                suggestions: [
+                    { words: ["Es", "hät", "es"], options: [["Es", "S'", "Das"], ["hät", "het", "hed"], ["Chrüsimüsi", "Problem", "Gschänkli"]] }
+                ]
+            },
+            "UR": {
+                name: "Uri",
+                path: "M 590,340 L 630,335 L 640,370 L 620,400 L 590,405 L 570,380 Z",
+                center: [605, 370],
+                suggestions: [
+                    { words: ["Ich", "lääsä", "äs"], options: [["Ich", "I", "Iich"], ["lääsä", "läse", "liesä"], ["Buech", "Büechli", "Brief"]] }
+                ]
+            },
+            "SZ": {
+                name: "Schwyz",
+                path: "M 630,320 L 660,315 L 670,345 L 650,365 L 620,360 L 615,340 Z",
+                center: [642, 340],
+                suggestions: [
+                    { words: ["Mir", "gönd", "uf"], options: [["Mir", "Mer", "Mr"], ["gönd", "gömmer", "ganged"], ["d'Rigi", "Schwyz", "d'Alp"]] }
+                ]
+            },
+            "OW": {
+                name: "Obwalden",
+                path: "M 570,340 L 590,338 L 595,360 L 580,365 L 565,355 Z",
+                center: [580, 350],
+                suggestions: [
+                    { words: ["I", "bi", "vom"], options: [["I", "Ich", "Ig"], ["bi", "bin", "bii"], ["Sarnersee", "Tal", "Dorf"]] }
+                ]
+            },
+            "NW": {
+                name: "Nidwalden",
+                path: "M 595,335 L 610,333 L 615,350 L 605,355 L 592,348 Z",
+                center: [603, 344],
+                suggestions: [
+                    { words: ["Mir", "hei", "es"], options: [["Mir", "Mer", "Mier"], ["hei", "händ", "hän"], ["schöns", "guets", "neus"]] }
+                ]
+            },
+            "GL": {
+                name: "Glarus",
+                path: "M 670,300 L 700,295 L 710,330 L 690,350 L 660,345 L 655,320 Z",
+                center: [682, 322],
+                suggestions: [
+                    { words: ["I", "gaa", "is"], options: [["I", "Ich", "Ii"], ["gaa", "gang", "gah"], ["Glarnerland", "Tal", "Bärge"]] }
+                ]
+            },
+            "ZG": {
+                name: "Zug",
+                path: "M 600,270 L 620,268 L 625,290 L 610,295 L 595,285 Z",
+                center: [610, 280],
+                suggestions: [
+                    { words: ["Mir", "sind", "z"], options: [["Mir", "Mer", "Mr"], ["sind", "si", "sen"], ["Zug", "Baar", "Cham"]] }
+                ]
+            },
+            "FR": {
+                name: "Fribourg",
+                path: "M 380,280 L 420,275 L 440,320 L 420,360 L 380,365 L 360,330 L 365,295 Z",
+                center: [400, 320],
+                suggestions: [
+                    { words: ["I", "ga", "uf"], options: [["I", "Ig", "Ich"], ["ga", "gang", "gah"], ["Friburg", "Murte", "Greyerz"]] }
+                ]
+            },
+            "SO": {
+                name: "Solothurn",
+                path: "M 480,220 L 520,215 L 540,250 L 520,270 L 480,265 L 465,240 Z",
+                center: [502, 242],
+                suggestions: [
+                    { words: ["I", "bi", "vo"], options: [["I", "Ig", "Ich"], ["bi", "bin", "bii"], ["Soledurn", "Olte", "Gränche"]] }
+                ]
+            },
+            "BS": {
+                name: "Basel-Stadt",
+                path: "M 470,180 L 490,178 L 495,195 L 485,200 L 470,195 Z",
+                center: [482, 189],
+                suggestions: [
+                    { words: ["Salü", "wie", "gohts"], options: [["Salü", "Sali", "Hoi"], ["wie", "wi", "was"], ["gohts", "goht's", "laufts"]] }
+                ]
+            },
+            "BL": {
+                name: "Basel-Landschaft",
+                path: "M 460,190 L 500,185 L 510,220 L 490,230 L 460,225 L 450,205 Z",
+                center: [480, 207],
+                suggestions: [
+                    { words: ["Mir", "gönd", "uf"], options: [["Mir", "Mer", "Mr"], ["gönd", "gömmer", "go"], ["Liestal", "Basel", "d'Länd"]] }
+                ]
+            },
+            "SH": {
+                name: "Schaffhausen",
+                path: "M 600,140 L 640,135 L 650,165 L 630,175 L 600,170 L 590,155 Z",
+                center: [620, 155],
+                suggestions: [
+                    { words: ["Mir", "sind", "am"], options: [["Mir", "Mer", "Mr"], ["sind", "si", "sen"], ["Rhiifall", "Munot", "Rhy"]] }
+                ]
+            },
+            "AR": {
+                name: "Appenzell Ausserrhoden",
+                path: "M 720,250 L 750,245 L 760,275 L 740,285 L 715,280 L 710,260 Z",
+                center: [735, 265],
+                suggestions: [
+                    { words: ["Gömmer", "go"], options: [["Gömmer", "Gönd", "Chömed"], ["Bumeranze", "Moscht", "Chäs"]] }
+                ]
+            },
+            "AI": {
+                name: "Appenzell Innerrhoden",
+                path: "M 730,260 L 745,258 L 750,270 L 740,275 L 728,270 Z",
+                center: [739, 267],
+                suggestions: [
+                    { words: ["I", "gang", "go"], options: [["I", "Ii", "Ich"], ["gang", "gaa", "goh"], ["Appezell", "Säntis", "Alp"]] }
+                ]
+            },
+            "SG": {
+                name: "St. Gallen",
+                path: "M 680,230 L 740,220 L 770,260 L 760,310 L 710,320 L 670,300 L 665,270 Z",
+                center: [717, 270],
+                suggestions: [
+                    { words: ["Auf", "Wieder"], options: [["Auf", "Uf", "Off"], ["Wiederloge", "Wiedersehe", "Widerluege"]] }
+                ]
+            },
+            "GR": {
+                name: "Graubünden",
+                path: "M 750,320 L 850,310 L 880,400 L 860,480 L 790,490 L 740,460 L 730,390 Z",
+                center: [805, 400],
+                suggestions: [
+                    { words: ["Mir", "gönd", "a"], options: [["Mir", "Mer", "Nus"], ["gönd", "gian", "gömmer"], ["d'Chilbi", "d'Alp", "Chur"]] }
+                ]
+            },
+            "AG": {
+                name: "Aargau",
+                path: "M 520,210 L 570,205 L 590,240 L 570,270 L 530,265 L 510,235 Z",
+                center: [550, 237],
+                suggestions: [
+                    { words: ["Häsch", "scho"], options: [["Häsch", "Hesch", "Händ"], ["Znüni", "Zmittag", "Znacht"]] }
+                ]
+            },
+            "TG": {
+                name: "Thurgau",
+                path: "M 650,180 L 700,175 L 720,210 L 700,240 L 660,235 L 645,205 Z",
+                center: [682, 207],
+                suggestions: [
+                    { words: ["Mir", "sind", "im"], options: [["Mir", "Mer", "Mr"], ["sind", "si", "sen"], ["Thurgau", "Moschtindie", "Seetal"]] }
+                ]
+            },
+            "TI": {
+                name: "Ticino",
+                path: "M 680,400 L 730,395 L 750,480 L 720,520 L 670,510 L 655,450 L 660,420 Z",
+                center: [702, 460],
+                suggestions: [
+                    { words: ["Ciao", "come"], options: [["Ciao", "Salü", "Hoi"], ["come", "wie", "was"], ["stai", "va", "bene"]] }
+                ]
+            },
+            "VD": {
+                name: "Vaud",
+                path: "M 280,320 L 360,310 L 380,380 L 360,440 L 300,450 L 270,420 L 260,360 Z",
+                center: [320, 380],
+                suggestions: [
+                    { words: ["Salut", "ça"], options: [["Salut", "Bonjour", "Coucou"], ["ça", "comment", "quoi"], ["va", "roule", "joue"]] }
+                ]
+            },
+            "VS": {
+                name: "Valais",
+                path: "M 400,400 L 500,395 L 550,420 L 540,470 L 480,485 L 400,475 L 380,440 L 385,410 Z",
+                center: [465, 440],
+                suggestions: [
+                    { words: ["Gang", "ds"], options: [["Gang", "Gah", "Gönd"], ["Pfeischter", "Fänschter", "Türe"]] }
+                ]
+            },
+            "NE": {
+                name: "Neuchâtel",
+                path: "M 340,250 L 380,245 L 390,280 L 375,300 L 340,295 L 330,270 Z",
+                center: [360, 272],
+                suggestions: [
+                    { words: ["On", "va"], options: [["On", "Nous", "Je"], ["va", "allons", "vais"], ["au", "à", "chez"]] }
+                ]
+            },
+            "GE": {
+                name: "Genève",
+                path: "M 250,380 L 280,378 L 290,405 L 275,415 L 250,410 L 240,395 Z",
+                center: [265, 396],
+                suggestions: [
+                    { words: ["On", "est"], options: [["On", "Nous", "Je"], ["est", "sommes", "suis"], ["à", "en", "chez"]] }
+                ]
+            },
+            "JU": {
+                name: "Jura",
+                path: "M 400,200 L 440,195 L 460,240 L 440,270 L 400,265 L 385,230 Z",
+                center: [422, 232],
+                suggestions: [
+                    { words: ["On", "va"], options: [["On", "Nous", "Y"], ["va", "allons", "vais"], ["dans", "au", "chez"]] }
+                ]
+            }
+        };
+
+        let currentCanton = null;
+        let isAnimating = false;
+        let autoPlayInterval = null;
+
+        // Initialize map
+        function initMap() {
+            const svg = document.getElementById('swissMap');
+            
+            // Add cantons
+            Object.entries(CANTONS).forEach(([code, canton]) => {
+                const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                g.classList.add('canton');
+                g.dataset.cantonCode = code;
+                
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                path.setAttribute('d', canton.path);
+                
+                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.classList.add('canton-label');
+                text.setAttribute('x', canton.center[0]);
+                text.setAttribute('y', canton.center[1]);
+                text.setAttribute('text-anchor', 'middle');
+                text.textContent = code;
+                
+                g.appendChild(path);
+                g.appendChild(text);
+                svg.appendChild(g);
+                
+                g.addEventListener('click', () => selectCanton(code));
+                g.addEventListener('mouseenter', () => showCantonInfo(canton));
+                g.addEventListener('mouseleave', () => hideCantonInfo());
+            });
+        }
+
+        // Show canton info
+        function showCantonInfo(canton) {
+            const info = document.getElementById('cantonInfo');
+            document.getElementById('cantonName').textContent = canton.name;
+            document.getElementById('cantonDialect').textContent = 'Dialekt aktiv';
+            info.classList.add('show');
+        }
+
+        function hideCantonInfo() {
+            document.getElementById('cantonInfo').classList.remove('show');
+        }
+
+        // Select canton
+        function selectCanton(code) {
+            if (isAnimating) return;
+            
+            const canton = CANTONS[code];
+            currentCanton = code;
+            
+            // Update active state
+            document.querySelectorAll('.canton').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.querySelector(`[data-canton-code="${code}"]`).classList.add('active');
+            
+            // Run animation
+            const suggestion = canton.suggestions[Math.floor(Math.random() * canton.suggestions.length)];
+            animateAutocomplete(suggestion);
+        }
+
+        // Type text animation
+        async function typeText(text, speed = 100) {
+            const element = document.getElementById('typedText');
+            element.textContent = '';
+            
+            for (let i = 0; i < text.length; i++) {
+                element.textContent += text[i];
+                await sleep(speed);
+            }
+        }
+
+        // Show suggestions
+        function showSuggestions(suggestions) {
+            const bar = document.getElementById('autocompleteBar');
+            bar.innerHTML = '';
+            
+            suggestions.forEach((word, index) => {
+                const pill = document.createElement('div');
+                pill.className = 'suggestion-pill';
+                if (index === 1) pill.classList.add('center');
+                pill.textContent = word;
+                pill.style.animationDelay = `${index * 50}ms`;
+                bar.appendChild(pill);
+            });
+            
+            bar.classList.add('show');
+        }
+
+        // Animate autocomplete
+        async function animateAutocomplete(suggestion) {
+            if (isAnimating) return;
+            isAnimating = true;
+            
+            const typedText = document.getElementById('typedText');
+            const bar = document.getElementById('autocompleteBar');
+            
+            // Reset
+            typedText.textContent = '';
+            bar.classList.remove('show');
+            bar.innerHTML = '';
+            
+            let fullText = '';
+            
+            for (let i = 0; i < suggestion.words.length; i++) {
+                await typeText(fullText + suggestion.words[i], 80);
+                await sleep(300);
+                
+                if (suggestion.options[i]) {
+                    showSuggestions(suggestion.options[i]);
+                    await sleep(1500);
+                    
+                    const centerPill = bar.querySelector('.center');
+                    if (centerPill) {
+                        // Accept middle suggestion
+                        fullText += suggestion.options[i][1] + ' ';
+                        typedText.textContent = fullText;
+                        
+                        bar.classList.remove('show');
+                        await sleep(400);
+                    }
+                } else {
+                    fullText = fullText + suggestion.words[i] + ' ';
+                }
+            }
+            
+            await sleep(2000);
+            isAnimating = false;
+        }
+
+        // Sleep utility
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // Auto-play
+        function startAutoPlay() {
+            stopAutoPlay();
+            autoPlayInterval = setInterval(() => {
+                if (!isAnimating) {
+                    const codes = Object.keys(CANTONS);
+                    const randomCode = codes[Math.floor(Math.random() * codes.length)];
+                    selectCanton(randomCode);
+                }
+            }, 6500);
+        }
+
+        function stopAutoPlay() {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initMap();
+            
+            // Start with Zürich after delay
+            setTimeout(() => {
+                selectCanton('ZH');
+                startAutoPlay();
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

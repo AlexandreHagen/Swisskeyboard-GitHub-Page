@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiss German iOS Autocomplete</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .switzerland-outline {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.2);
+            stroke-width: 3;
+        }
+
+        .canton {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .canton path {
+            stroke: rgba(255, 255, 255, 0.8);
+            stroke-width: 2;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .canton:hover path {
+            fill: rgba(139, 92, 246, 0.6);
+            stroke-width: 3;
+            transform: scale(1.08);
+        }
+
+        .canton.active path {
+            fill: rgba(99, 102, 241, 0.8);
+            stroke: white;
+            stroke-width: 4;
+            transform: scale(1.15);
+            filter: drop-shadow(0 8px 20px rgba(99, 102, 241, 0.4));
+        }
+
+        .canton text {
+            pointer-events: none;
+            font-size: 18px;
+            font-weight: 600;
+            fill: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Tether line */
+        .tether {
+            position: absolute;
+            background: linear-gradient(to bottom, 
+                rgba(255, 255, 255, 0.6), 
+                rgba(255, 255, 255, 0));
+            width: 1.5px;
+            transform-origin: top;
+            pointer-events: none;
+            z-index: 5;
+            transition: opacity 0.3s ease;
+        }
+
+        /* iOS-style input */
+        .ios-input-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 10;
+            width: 420px;
+        }
+
+        /* Message bubble style input */
+        .message-input {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 12px 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .typing-text {
+            font-size: 17px;
+            color: #000;
+            min-height: 24px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 20px;
+            background: #007AFF;
+            margin-left: 1px;
+            animation: blink 1s infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        /* iOS autocomplete bar */
+        .autocomplete-bar {
+            display: flex;
+            gap: 8px;
+            padding: 8px 0;
+            margin-bottom: 8px;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .autocomplete-bar.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .suggestion-pill {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: 18px;
+            padding: 8px 16px;
+            font-size: 17px;
+            color: #000;
+            font-weight: 400;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            animation: pillSlide 0.3s ease;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        @keyframes pillSlide {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(5px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .suggestion-pill:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.05);
+        }
+
+        /* Center pill highlight */
+        .suggestion-pill.center {
+            background: rgba(255, 255, 255, 1);
+            font-weight: 500;
+        }
+
+        /* Divider between pills */
+        .pill-divider {
+            width: 1px;
+            background: rgba(0, 0, 0, 0.1);
+            margin: 4px 0;
+        }
+
+        /* Tap animation */
+        .suggestion-pill.tapped {
+            animation: tapPill 0.3s ease;
+        }
+
+        @keyframes tapPill {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.95);
+                background: rgba(0, 122, 255, 0.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Completion animation */
+        @keyframes slideComplete {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .completed-word {
+            animation: slideComplete 0.3s ease;
+            color: #007AFF;
+        }
+
+        /* Pulse for active canton */
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .canton.active path {
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+
+        /* Region label (minimal) */
+        .region-indicator {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.9;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="region-indicator" id="regionIndicator"></div>
+        
+        <div class="map-container">
+            <svg viewBox="0 0 900 700" id="swissMap">
+                <!-- Switzerland outline -->
+                <path class="switzerland-outline" 
+                      d="M 290,300 L 330,280 L 400,275 L 470,285 L 540,295 L 620,310 L 660,350 L 670,410 L 660,470 L 630,520 L 570,540 L 500,545 L 430,540 L 350,530 L 290,510 L 270,450 L 280,380 Z"/>
+            </svg>
+
+            <!-- Tether line -->
+            <div class="tether" id="tether"></div>
+
+            <!-- iOS-style input -->
+            <div class="ios-input-container" id="iosInput">
+                <div class="autocomplete-bar" id="autocompleteBar"></div>
+                <div class="message-input">
+                    <div class="typing-text">
+                        <span id="typedText"></span>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Regions with iOS-style word suggestions
+        const REGIONS = [
+            {
+                id: "zurich",
+                name: "Zürich",
+                canton: "ZH",
+                centerX: 470, centerY: 330,
+                path: "M 450,310 L 510,300 L 530,320 L 520,350 L 490,360 L 450,350 Z",
+                color: "rgba(148, 163, 184, 0.5)",
+                sequences: [
+                    {
+                        words: ["Ich", "gang", "go"],
+                        suggestions: [
+                            ["Ich", "I", "Ig"],
+                            ["gang", "gange", "gah"],
+                            ["poschte", "chrömle", "schaffe"]
+                        ]
+                    },
+                    {
+                        words: ["Mer", "gönd", "id"],
+                        suggestions: [
+                            ["Mer", "Mir", "Mr"],
+                            ["gönd", "gömmer", "ganged"],
+                            ["Beiz", "Badi", "Stadt"]
+                        ]
+                    },
+                    {
+                        words: ["Das", "isch", "mega"],
+                        suggestions: [
+                            ["Das", "Dis", "S'"],
+                            ["isch", "esch", "wär"],
+                            ["gäbig", "cool", "lässig"]
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "basel",
+                name: "Basel",
+                canton: "BS",
+                centerX: 370, centerY: 340,
+                path: "M 340,320 L 380,315 L 400,330 L 395,360 L 360,365 L 335,350 Z",
+                color: "rgba(148, 163, 184, 0.5)",
+                sequences: [
+                    {
+                        words: ["Salü", "wie", "gohts"],
+                        suggestions: [
+                            ["Salü", "Sali", "Hoi"],
+                            ["wie", "wi", "was"],
+                            ["gohts", "goht's", "laufts"]
+                        ]
+                    },
+                    {
+                        words: ["Merci", "vilmal", "für"],
+                        suggestions: [
+                            ["Merci", "Danke", "Mersi"],
+                            ["vilmal", "vil", "vielmal"],
+                            ["d'Hilf", "alles", "d'Zyt"]
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "bern",
+                name: "Bern",
+                canton: "BE",
+                centerX: 390, centerY: 420,
+                path: "M 330,380 L 380,370 L 440,380 L 460,410 L 450,460 L 410,480 L 350,470 L 320,440 Z",
+                color: "rgba(148, 163, 184, 0.5)",
+                sequences: [
+                    {
+                        words: ["Das", "isch", "gäng"],
+                        suggestions: [
+                            ["Das", "Ds", "S'"],
+                            ["isch", "esch", "sy"],
+                            ["gäng", "immer", "allpott"]
+                        ]
+                    },
+                    {
+                        words: ["Mir", "hei", "e"],
+                        suggestions: [
+                            ["Mir", "Mer", "I"],
+                            ["hei", "hätte", "hän"],
+                            ["schöni", "gueti", "nöii"]
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "luzern",
+                name: "Luzern",
+                canton: "LU",
+                centerX: 460, centerY: 400,
+                path: "M 440,380 L 480,375 L 500,400 L 495,425 L 460,430 L 435,410 Z",
+                color: "rgba(148, 163, 184, 0.5)",
+                sequences: [
+                    {
+                        words: ["Es", "hät", "es"],
+                        suggestions: [
+                            ["Es", "S'", "Das"],
+                            ["hät", "het", "hed"],
+                            ["Chrüsimüsi", "Problem", "Gschänkli"]
+                        ]
+                    },
+                    {
+                        words: ["Das", "isch", "mega"],
+                        suggestions: [
+                            ["Das", "Dis", "S'"],
+                            ["isch", "esch", "werd"],
+                            ["woufu", "günstig", "billig"]
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "stgallen",
+                name: "St. Gallen",
+                canton: "SG",
+                centerX: 570, centerY: 360,
+                path: "M 535,325 L 595,315 L 620,340 L 615,380 L 580,395 L 540,380 L 530,350 Z",
+                color: "rgba(148, 163, 184, 0.5)",
+                sequences: [
+                    {
+                        words: ["Auf", "Wieder"],
+                        suggestions: [
+                            ["Auf", "Uf", "Off"],
+                            ["Wiederloge", "Wiedersehe", "Widerluege"]
+                        ]
+                    },
+                    {
+                        words: ["Grüezi", "mite"],
+                        suggestions: [
+                            ["Grüezi", "Guete", "Hoi"],
+                            ["mitenand", "zäme", "allne"]
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "wallis",
+                name: "Wallis",
+                canton: "VS",
+                centerX: 400, centerY: 510,
+                path: "M 310,490 L 450,480 L 500,500 L 495,530 L 430,545 L 330,535 L 300,515 Z",
+                color: "rgba(148, 163, 184, 0.5)",
+                sequences: [
+                    {
+                        words: ["Gang", "ds"],
+                        suggestions: [
+                            ["Gang", "Gah", "Gönd"],
+                            ["Pfeischter", "Fänschter", "Türe"]
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "graubuenden",
+                name: "Graubünden",
+                canton: "GR",
+                centerX: 570, centerY: 460,
+                path: "M 505,410 L 610,400 L 650,440 L 640,510 L 590,530 L 520,520 L 500,480 Z",
+                color: "rgba(148, 163, 184, 0.5)",
+                sequences: [
+                    {
+                        words: ["Mir", "gönd", "a"],
+                        suggestions: [
+                            ["Mir", "Mer", "Nus"],
+                            ["gönd", "gian", "gömmer"],
+                            ["d'Chilbi", "d'Chilä", "d'Festa"]
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "uri",
+                name: "Uri",
+                canton: "UR",
+                centerX: 480, centerY: 445,
+                path: "M 460,425 L 510,415 L 525,445 L 515,475 L 470,485 L 450,465 Z",
+                color: "rgba(148, 163, 184, 0.5)",
+                sequences: [
+                    {
+                        words: ["Ich", "lääsä", "äs"],
+                        suggestions: [
+                            ["Ich", "I", "Iich"],
+                            ["lääsä", "läse", "liesä"],
+                            ["Buech", "Büechli", "Brief"]
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "aargau",
+                name: "Aargau",
+                canton: "AG",
+                centerX: 430, centerY: 345,
+                path: "M 400,325 L 445,315 L 470,335 L 465,365 L 425,370 L 395,355 Z",
+                color: "rgba(148, 163, 184, 0.5)",
+                sequences: [
+                    {
+                        words: ["Häsch", "scho"],
+                        suggestions: [
+                            ["Häsch", "Hesch", "Händ"],
+                            ["Znüni", "Zmittag", "Znacht"]
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "appenzell",
+                name: "Appenzell",
+                canton: "AI",
+                centerX: 590, centerY: 380,
+                path: "M 575,370 L 600,365 L 610,385 L 595,400 L 575,395 Z",
+                color: "rgba(148, 163, 184, 0.5)",
+                sequences: [
+                    {
+                        words: ["Gömmer", "go"],
+                        suggestions: [
+                            ["Gömmer", "Gönd", "Chömed"],
+                            ["Bumeranze", "Öpfel", "Moscht"]
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        let currentRegion = null;
+        let isAnimating = false;
+        let autoPlayInterval = null;
+
+        // Initialize map
+        function initMap() {
+            const svg = document.getElementById('swissMap');
+            
+            REGIONS.forEach(region => {
+                const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                g.classList.add('canton');
+                g.dataset.regionId = region.id;
+                
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                path.setAttribute('d', region.path);
+                path.setAttribute('fill', region.color);
+                
+                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', region.centerX);
+                text.setAttribute('y', region.centerY);
+                text.setAttribute('text-anchor', 'middle');
+                text.textContent = region.canton;
+                
+                g.appendChild(path);
+                g.appendChild(text);
+                svg.appendChild(g);
+                
+                g.addEventListener('click', () => selectRegion(region));
+            });
+        }
+
+        // Update tether
+        function updateTether(region) {
+            const tether = document.getElementById('tether');
+            const input = document.getElementById('iosInput');
+            
+            const inputRect = input.getBoundingClientRect();
+            const inputCenterX = inputRect.left + inputRect.width / 2;
+            const inputCenterY = inputRect.top + inputRect.height / 2;
+            
+            const cantonX = region.centerX * (window.innerWidth / 900);
+            const cantonY = region.centerY * (window.innerHeight / 700);
+            
+            const deltaX = inputCenterX - cantonX;
+            const deltaY = inputCenterY - cantonY;
+            const angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI - 90;
+            const length = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            
+            tether.style.left = cantonX + 'px';
+            tether.style.top = cantonY + 'px';
+            tether.style.height = length + 'px';
+            tether.style.transform = `rotate(${angle}deg)`;
+            tether.style.opacity = '0.5';
+        }
+
+        // Select region
+        function selectRegion(region) {
+            if (isAnimating) return;
+            
+            currentRegion = region;
+            
+            document.querySelectorAll('.canton').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.querySelector(`[data-region-id="${region.id}"]`).classList.add('active');
+            
+            document.getElementById('regionIndicator').textContent = region.name;
+            updateTether(region);
+            
+            const sequence = region.sequences[Math.floor(Math.random() * region.sequences.length)];
+            animateIOSAutocomplete(sequence);
+        }
+
+        // Type text
+        async function typeText(text, speed = 100) {
+            const element = document.getElementById('typedText');
+            element.textContent = '';
+            
+            for (let i = 0; i < text.length; i++) {
+                element.textContent += text[i];
+                await sleep(speed);
+            }
+        }
+
+        // Show autocomplete suggestions
+        function showSuggestions(suggestions) {
+            const bar = document.getElementById('autocompleteBar');
+            bar.innerHTML = '';
+            
+            suggestions.forEach((word, index) => {
+                if (index > 0) {
+                    const divider = document.createElement('div');
+                    divider.className = 'pill-divider';
+                    bar.appendChild(divider);
+                }
+                
+                const pill = document.createElement('div');
+                pill.className = 'suggestion-pill';
+                if (index === 1) pill.classList.add('center');
+                pill.textContent = word;
+                pill.style.animationDelay = `${index * 50}ms`;
+                bar.appendChild(pill);
+            });
+            
+            bar.classList.add('show');
+        }
+
+        // Animate iOS autocomplete
+        async function animateIOSAutocomplete(sequence) {
+            if (isAnimating) return;
+            isAnimating = true;
+            
+            const typedText = document.getElementById('typedText');
+            const bar = document.getElementById('autocompleteBar');
+            
+            // Reset
+            typedText.textContent = '';
+            bar.classList.remove('show');
+            bar.innerHTML = '';
+            
+            let fullText = '';
+            
+            for (let i = 0; i < sequence.words.length; i++) {
+                // Type word
+                await typeText(fullText + sequence.words[i], 80);
+                await sleep(300);
+                
+                // Show suggestions if available
+                if (sequence.suggestions[i]) {
+                    showSuggestions(sequence.suggestions[i]);
+                    await sleep(1500);
+                    
+                    // "Tap" middle suggestion
+                    const centerPill = bar.querySelector('.center');
+                    if (centerPill) {
+                        centerPill.classList.add('tapped');
+                        await sleep(300);
+                        
+                        // Replace with selected word
+                        fullText += sequence.suggestions[i][1] + ' ';
+                        typedText.innerHTML = fullText.split(' ').map((word, idx) => 
+                            idx === fullText.split(' ').length - 2 ? 
+                            `<span class="completed-word">${word}</span>` : word
+                        ).join(' ');
+                        
+                        // Hide suggestions
+                        bar.classList.remove('show');
+                        await sleep(400);
+                    }
+                } else {
+                    fullText = fullText + sequence.words[i] + ' ';
+                }
+            }
+            
+            await sleep(2000);
+            isAnimating = false;
+        }
+
+        // Sleep utility
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // Auto-play
+        function startAutoPlay() {
+            stopAutoPlay();
+            autoPlayInterval = setInterval(() => {
+                if (!isAnimating) {
+                    const randomRegion = REGIONS[Math.floor(Math.random() * REGIONS.length)];
+                    selectRegion(randomRegion);
+                }
+            }, 6500);
+        }
+
+        function stopAutoPlay() {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initMap();
+            document.getElementById('tether').style.opacity = '0';
+            
+            setTimeout(() => {
+                const randomRegion = REGIONS[Math.floor(Math.random() * REGIONS.length)];
+                selectRegion(randomRegion);
+                startAutoPlay();
+            }, 1000);
+        });
+
+        window.addEventListener('resize', () => {
+            if (currentRegion) {
+                updateTether(currentRegion);
+            }
+        });
+    </script>
+</body>
+</html>
