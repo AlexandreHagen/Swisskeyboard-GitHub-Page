@@ -24,6 +24,9 @@
       "betaEmailPlaceholder": "Deine E-Mail Adresse",
       "betaCta": "Zur Beta"
     },
+    "form": {
+      "emailInvalid": "Bitte eine gültige E-Mail-Adresse eingeben"
+    },
     "infoGrid": {
       "voiceToText": {
         "title": "Sprachsouveränität",
@@ -185,6 +188,9 @@
       "betaDescription": "Laisse ton e-mail pour rejoindre le programme bêta et contribuer au produit.",
       "betaEmailPlaceholder": "Ton adresse e-mail",
       "betaCta": "Rejoindre la bêta"
+    },
+    "form": {
+      "emailInvalid": "Veuillez saisir une adresse e-mail valide"
     },
     "infoGrid": {
       "voiceToText": {
@@ -348,6 +354,9 @@
       "betaEmailPlaceholder": "Il tuo indirizzo e-mail",
       "betaCta": "Unisciti alla beta"
     },
+    "form": {
+      "emailInvalid": "Inserisci un indirizzo email valido"
+    },
     "infoGrid": {
       "voiceToText": {
         "title": "Sovranità linguistica",
@@ -510,6 +519,9 @@
       "betaEmailPlaceholder": "Tia adressa e-mail",
       "betaCta": "Far part"
     },
+    "form": {
+      "emailInvalid": "Per plaschair inditgescha ina adressa e-mail valida"
+    },
     "infoGrid": {
       "voiceToText": {
         "title": "Suveranitad linguistica",
@@ -671,6 +683,9 @@
       "betaDescription": "Leave your email to join the beta program and help shape the product.",
       "betaEmailPlaceholder": "Your email address",
       "betaCta": "Join beta"
+    },
+    "form": {
+      "emailInvalid": "Please enter a valid email address"
     },
     "infoGrid": {
       "voiceToText": {

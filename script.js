@@ -270,9 +270,32 @@ function initNewsletterForm() {
     const forms = document.querySelectorAll('.newsletter-form');
     if (!forms.length) return;
 
+    const translate = (key, fallback) => {
+        const t = window.i18n && typeof window.i18n.t === 'function'
+            ? window.i18n.t
+            : null;
+        return t ? t(key, fallback) : fallback;
+    };
+
+    const getInvalidMessage = (input) => (
+        input.getAttribute('title') || translate('form.emailInvalid', 'Please enter a valid email address')
+    );
+
     forms.forEach(form => {
         const emailInput = form.querySelector('input[type="email"]');
         if (!emailInput) return;
+
+        const clearInvalid = () => {
+            emailInput.setCustomValidity('');
+            emailInput.removeAttribute('aria-invalid');
+        };
+
+        emailInput.addEventListener('input', clearInvalid);
+
+        emailInput.addEventListener('invalid', () => {
+            emailInput.setCustomValidity(getInvalidMessage(emailInput));
+            emailInput.setAttribute('aria-invalid', 'true');
+        });
 
         form.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -282,18 +305,13 @@ function initNewsletterForm() {
                 return;
             }
 
+            clearInvalid();
+
             const email = emailInput.value.trim();
-            const t = window.i18n && typeof window.i18n.t === 'function'
-                ? window.i18n.t
-                : null;
-            const subjectTemplate = t ? t('cta.emailSubject', 'Beta program signup') : 'Beta program signup';
-            const bodyTemplate = t
-                ? t('cta.emailBody', 'Hello,\nI would like to sign up for the beta program.\nEmail: {email}')
-                : 'Hello,\nI would like to sign up for the beta program.\nEmail: {email}';
-            const bodyWithEmail = bodyTemplate.replace('{email}', email);
-            const subjectWithEnglish = `${subjectTemplate} (Beta program signup)`;
-            const subject = encodeURIComponent(subjectWithEnglish);
-            const body = encodeURIComponent(bodyWithEmail);
+            const subjectTemplate = translate('cta.emailSubject', 'Beta program signup');
+            const bodyTemplate = translate('cta.emailBody', 'Hello,\nI would like to sign up for the beta program.\nEmail: {email}');
+            const subject = encodeURIComponent(`${subjectTemplate} (Beta program signup)`);
+            const body = encodeURIComponent(bodyTemplate.replace('{email}', email));
             window.location.href = `mailto:contact@swisskeyboard.ch?subject=${subject}&body=${body}`;
         });
     });
