@@ -193,7 +193,7 @@ async function typeText(text, speed = 100) {
 // Show suggestions
 function showSuggestions(suggestions) {
     const bar = document.getElementById('autocompleteBar');
-    bar.innerHTML = '';
+    bar.replaceChildren();
 
     suggestions.forEach((word, index) => {
         const pill = document.createElement('div');
@@ -218,7 +218,7 @@ async function animateAutocomplete(suggestion) {
     // Reset
     typedText.textContent = '';
     bar.classList.remove('show');
-    bar.innerHTML = '';
+    bar.replaceChildren();
 
     let fullText = '';
 

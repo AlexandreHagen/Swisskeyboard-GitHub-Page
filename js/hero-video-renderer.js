@@ -48,6 +48,27 @@ class HeroVideoRenderer {
             invert: false      // Invert colors
         };
     }
+
+    /**
+     * Validate and normalize a video source.
+     * Allows same-origin URLs, relative paths, blob:, and video/* data URIs.
+     */
+    sanitizeVideoSrc(src) {
+        if (typeof src !== 'string') return null;
+        const trimmed = src.trim();
+        if (!trimmed) return null;
+        if (trimmed.startsWith('blob:')) return trimmed;
+        if (trimmed.startsWith('data:')) {
+            return /^data:video\//i.test(trimmed) ? trimmed : null;
+        }
+        try {
+            const url = new URL(trimmed, window.location.href);
+            if (url.origin !== window.location.origin) return null;
+            return url.href;
+        } catch {
+            return null;
+        }
+    }
     
     /**
      * Create character map based on brightness levels
@@ -82,17 +103,22 @@ class HeroVideoRenderer {
         
         // Set video source
         if (videoPath) {
+            const safeVideoPath = this.sanitizeVideoSrc(videoPath);
+            if (!safeVideoPath) {
+                console.warn('Hero video renderer: blocked unsafe video path');
+                return;
+            }
             // Handle both blob URLs and regular paths
-            if (videoPath.startsWith('blob:') || videoPath.startsWith('data:')) {
+            if (safeVideoPath.startsWith('blob:') || safeVideoPath.startsWith('data:')) {
                 // For blob/data URLs, set directly on video element
-                this.video.src = videoPath;
+                this.video.src = safeVideoPath;
             } else {
                 // For regular paths, use source element
                 const source = document.getElementById('hero-video-src');
                 if (source) {
-                    source.src = videoPath;
+                    source.src = safeVideoPath;
                 } else {
-                    this.video.src = videoPath;
+                    this.video.src = safeVideoPath;
                 }
             }
             this.video.load();
@@ -174,7 +200,7 @@ class HeroVideoRenderer {
      * Create the grid of character elements
      */
     createCharacterGrid(cols, rows) {
-        this.display.innerHTML = '';
+        this.display.replaceChildren();
         this.charElements = [];
         
         for (let y = 0; y < rows; y++) {
@@ -359,4 +385,3 @@ document.addEventListener('DOMContentLoaded', () => {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { HeroVideoRenderer, initHeroVideoRenderer };
 }
-
