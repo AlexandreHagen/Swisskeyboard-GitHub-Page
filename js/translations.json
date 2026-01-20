@@ -140,6 +140,8 @@
       "description": "Ein Schweizer Projekt braucht Schweizer Unterstützung. Kein Venture Capital aus dem Ausland. Keine fremden Interessen. Nur eine Mission: Deine Sprache schützen.",
       "emailPlaceholder": "Deine E-Mail Adresse",
       "subscribe": "Dabei sein",
+      "emailSubject": "Anmeldung Beta-Programm",
+      "emailBody": "Hallo,\nich möchte mich für das Beta-Programm anmelden.\nE-Mail: {email}",
       "contact": {
         "title": "Kontakt",
         "description": "Fragen, Feedback oder Ideen?"
@@ -295,6 +297,8 @@
       "description": "Un projet suisse a besoin de soutien suisse. Pas de capital-risque étranger. Pas d'intérêts étrangers. Juste une mission: protéger ta langue.",
       "emailPlaceholder": "Ton adresse e-mail",
       "subscribe": "Rejoindre",
+      "emailSubject": "Inscription au programme bêta",
+      "emailBody": "Bonjour,\nje souhaite être inscrit pour participer au programme de la bêta.\nE-mail : {email}",
       "contact": {
         "title": "Contact",
         "description": "Questions, feedback ou idées?"
@@ -450,6 +454,8 @@
       "description": "Un progetto svizzero ha bisogno di supporto svizzero. Nessun capitale di rischio straniero. Nessun interesse straniero. Solo una missione: proteggere la tua lingua.",
       "emailPlaceholder": "Il tuo indirizzo e-mail",
       "subscribe": "Unisciti",
+      "emailSubject": "Iscrizione al programma beta",
+      "emailBody": "Ciao,\nvorrei iscrivermi per partecipare al programma beta.\nEmail: {email}",
       "contact": {
         "title": "Contatto",
         "description": "Domande, feedback o idee?"
@@ -605,6 +611,8 @@
       "description": "In project svizzer basegna sustegn svizzer. Nagin venture capital da l'ester. Nagins interess esters. Mo ina missiun: proteger tia lingua.",
       "emailPlaceholder": "Tia adressa e-mail",
       "subscribe": "Far part",
+      "emailSubject": "Annunzia al program beta",
+      "emailBody": "Allegra,\njau vuless vegnir annunzià per participar al program beta.\nE-mail: {email}",
       "contact": {
         "title": "Contact",
         "description": "Dumondas, feedback u ideas?"
@@ -760,6 +768,8 @@
       "description": "A Swiss project needs Swiss support. No foreign venture capital. No foreign interests. Just one mission: protect your language.",
       "emailPlaceholder": "Your email address",
       "subscribe": "Join",
+      "emailSubject": "Beta program signup",
+      "emailBody": "Hello,\nI'd like to sign up to participate in the beta program.\nEmail: {email}",
       "contact": {
         "title": "Contact",
         "description": "Questions, feedback, or ideas?"

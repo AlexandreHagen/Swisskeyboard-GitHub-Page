@@ -129,6 +129,9 @@ let autoPlayInterval = null;
 // Initialize map
 function initMap() {
     const svg = document.getElementById('swissMap');
+    if (!svg) {
+        return false;
+    }
 
     // Add simplified cantons
     Object.entries(CANTONS).forEach(([code, canton]) => {
@@ -152,6 +155,8 @@ function initMap() {
 
         g.addEventListener('click', () => selectCanton(code));
     });
+
+    return true;
 }
 
 // Select canton
@@ -165,7 +170,9 @@ function selectCanton(code) {
     document.querySelectorAll('.canton').forEach(el => {
         el.classList.remove('active');
     });
-    document.querySelector(`[data-canton-code="${code}"]`).classList.add('active');
+    const activeCanton = document.querySelector(`[data-canton-code="${code}"]`);
+    if (!activeCanton) return;
+    activeCanton.classList.add('active');
 
     // Run animation
     const suggestion = canton.suggestions[0];
@@ -259,9 +266,41 @@ function stopAutoPlay() {
     }
 }
 
+function initNewsletterForm() {
+    const form = document.querySelector('.newsletter-form');
+    if (!form) return;
+
+    const emailInput = form.querySelector('input[type="email"]');
+    if (!emailInput) return;
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        if (!emailInput.checkValidity()) {
+            emailInput.reportValidity();
+            return;
+        }
+
+        const email = emailInput.value.trim();
+        const t = window.i18n && typeof window.i18n.t === 'function'
+            ? window.i18n.t
+            : null;
+        const subjectTemplate = t ? t('cta.emailSubject', 'Beta program signup') : 'Beta program signup';
+        const bodyTemplate = t
+            ? t('cta.emailBody', 'Hello,\nI would like to sign up for the beta program.\nEmail: {email}')
+            : 'Hello,\nI would like to sign up for the beta program.\nEmail: {email}';
+        const bodyWithEmail = bodyTemplate.replace('{email}', email);
+        const subjectWithEnglish = `${subjectTemplate} (Beta program signup)`;
+        const subject = encodeURIComponent(subjectWithEnglish);
+        const body = encodeURIComponent(bodyWithEmail);
+        window.location.href = `mailto:contact@swisskeyboard.ch?subject=${subject}&body=${body}`;
+    });
+}
+
 // Initialize immediately when script loads (components are already loaded)
 function init() {
-    initMap();
+    const hasMap = initMap();
+    initNewsletterForm();
 
     // Initialize hero video renderer
     // To use: call initHeroVideoRenderer('path/to/your/video.mp4') when video is ready
@@ -272,11 +311,13 @@ function init() {
     //     }
     // }, 1000);
 
-    // Start with Zürich after delay
-    setTimeout(() => {
-        selectCanton('ZH');
-        startAutoPlay();
-    }, 750);
+    if (hasMap) {
+        // Start with Zürich after delay
+        setTimeout(() => {
+            selectCanton('ZH');
+            startAutoPlay();
+        }, 750);
+    }
 }
 
 // Check if DOM is already loaded or wait for it
