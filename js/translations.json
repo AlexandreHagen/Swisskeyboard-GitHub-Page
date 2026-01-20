@@ -17,7 +17,12 @@
       "appStore": "Download on the",
       "appStoreName": "App Store",
       "playStore": "GET IT ON",
-      "playStoreName": "Google Play"
+      "playStoreName": "Google Play",
+      "betaHelper": "Beta-Programm",
+      "betaTitle": "Früher Zugang",
+      "betaDescription": "Trag deine E-Mail ein, um am Beta-Programm teilzunehmen und das Produkt mitzugestalten.",
+      "betaEmailPlaceholder": "Deine E-Mail Adresse",
+      "betaCta": "Zur Beta"
     },
     "infoGrid": {
       "voiceToText": {
@@ -174,7 +179,12 @@
       "appStore": "Télécharger sur",
       "appStoreName": "App Store",
       "playStore": "TÉLÉCHARGER SUR",
-      "playStoreName": "Google Play"
+      "playStoreName": "Google Play",
+      "betaHelper": "Programme bêta",
+      "betaTitle": "Accès anticipé",
+      "betaDescription": "Laisse ton e-mail pour rejoindre le programme bêta et contribuer au produit.",
+      "betaEmailPlaceholder": "Ton adresse e-mail",
+      "betaCta": "Rejoindre la bêta"
     },
     "infoGrid": {
       "voiceToText": {
@@ -331,7 +341,12 @@
       "appStore": "Scarica su",
       "appStoreName": "App Store",
       "playStore": "SCARICA SU",
-      "playStoreName": "Google Play"
+      "playStoreName": "Google Play",
+      "betaHelper": "Programma beta",
+      "betaTitle": "Accesso anticipato",
+      "betaDescription": "Lascia la tua email per partecipare al programma beta e contribuire al prodotto.",
+      "betaEmailPlaceholder": "Il tuo indirizzo e-mail",
+      "betaCta": "Unisciti alla beta"
     },
     "infoGrid": {
       "voiceToText": {
@@ -488,7 +503,12 @@
       "appStore": "Telechargiar sin",
       "appStoreName": "App Store",
       "playStore": "TELECHARGIAR SIN",
-      "playStoreName": "Google Play"
+      "playStoreName": "Google Play",
+      "betaHelper": "Program beta",
+      "betaTitle": "Accès tempran",
+      "betaDescription": "Lai tia e-mail per participar al program beta e gidar a furmar il product.",
+      "betaEmailPlaceholder": "Tia adressa e-mail",
+      "betaCta": "Far part"
     },
     "infoGrid": {
       "voiceToText": {
@@ -645,7 +665,12 @@
       "appStore": "Download on the",
       "appStoreName": "App Store",
       "playStore": "GET IT ON",
-      "playStoreName": "Google Play"
+      "playStoreName": "Google Play",
+      "betaHelper": "Beta program",
+      "betaTitle": "Early access",
+      "betaDescription": "Leave your email to join the beta program and help shape the product.",
+      "betaEmailPlaceholder": "Your email address",
+      "betaCta": "Join beta"
     },
     "infoGrid": {
       "voiceToText": {

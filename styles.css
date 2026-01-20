@@ -601,6 +601,61 @@ svg {
     font-weight: 600;
 }
 
+/* Beta Join (replaces store badges) */
+.beta-join-section {
+    text-align: left;
+}
+
+.beta-join-section .badges-helper-text {
+    text-align: left;
+}
+
+.beta-join-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.beta-join-text {
+    max-width: 560px;
+}
+
+.beta-join-text h3 {
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+}
+
+.beta-join-text p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #444;
+}
+
+.beta-join-form {
+    flex: 1;
+    max-width: 520px;
+}
+
+.beta-join-section .email-input {
+    border-color: #1a1a1a;
+    background: #fff;
+    color: #1a1a1a;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.beta-join-section .email-input::placeholder {
+    color: #666;
+}
+
+.beta-join-section .email-input:focus {
+    border-color: #DC0018;
+    box-shadow: 0 0 0 3px rgba(220, 0, 24, 0.15);
+}
+
 /* Section Headers */
 .section-header {
     display: grid;
@@ -1138,6 +1193,15 @@ svg {
 
     .map-container {
         height: 420px;
+    }
+
+    .beta-join-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .beta-join-text h3 {
+        font-size: 24px;
     }
 }
 

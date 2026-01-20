@@ -267,33 +267,35 @@ function stopAutoPlay() {
 }
 
 function initNewsletterForm() {
-    const form = document.querySelector('.newsletter-form');
-    if (!form) return;
+    const forms = document.querySelectorAll('.newsletter-form');
+    if (!forms.length) return;
 
-    const emailInput = form.querySelector('input[type="email"]');
-    if (!emailInput) return;
+    forms.forEach(form => {
+        const emailInput = form.querySelector('input[type="email"]');
+        if (!emailInput) return;
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
 
-        if (!emailInput.checkValidity()) {
-            emailInput.reportValidity();
-            return;
-        }
+            if (!emailInput.checkValidity()) {
+                emailInput.reportValidity();
+                return;
+            }
 
-        const email = emailInput.value.trim();
-        const t = window.i18n && typeof window.i18n.t === 'function'
-            ? window.i18n.t
-            : null;
-        const subjectTemplate = t ? t('cta.emailSubject', 'Beta program signup') : 'Beta program signup';
-        const bodyTemplate = t
-            ? t('cta.emailBody', 'Hello,\nI would like to sign up for the beta program.\nEmail: {email}')
-            : 'Hello,\nI would like to sign up for the beta program.\nEmail: {email}';
-        const bodyWithEmail = bodyTemplate.replace('{email}', email);
-        const subjectWithEnglish = `${subjectTemplate} (Beta program signup)`;
-        const subject = encodeURIComponent(subjectWithEnglish);
-        const body = encodeURIComponent(bodyWithEmail);
-        window.location.href = `mailto:contact@swisskeyboard.ch?subject=${subject}&body=${body}`;
+            const email = emailInput.value.trim();
+            const t = window.i18n && typeof window.i18n.t === 'function'
+                ? window.i18n.t
+                : null;
+            const subjectTemplate = t ? t('cta.emailSubject', 'Beta program signup') : 'Beta program signup';
+            const bodyTemplate = t
+                ? t('cta.emailBody', 'Hello,\nI would like to sign up for the beta program.\nEmail: {email}')
+                : 'Hello,\nI would like to sign up for the beta program.\nEmail: {email}';
+            const bodyWithEmail = bodyTemplate.replace('{email}', email);
+            const subjectWithEnglish = `${subjectTemplate} (Beta program signup)`;
+            const subject = encodeURIComponent(subjectWithEnglish);
+            const body = encodeURIComponent(bodyWithEmail);
+            window.location.href = `mailto:contact@swisskeyboard.ch?subject=${subject}&body=${body}`;
+        });
     });
 }
 
