@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wave Test</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: #FAFAFA;
+        }
+
+        .ascii-wave-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .ascii-wave-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- ASCII Wave Background -->
+    <div class="ascii-wave-container" id="waveTest">
+        <script type="application/json" class="wave-config">
+        {
+            "fontSize": 14,
+            "opacity": 0.7,
+            "threshold": 0.35,
+            "animSpeed": 0.05,
+            "fadeTop": false,
+            "fadeBottom": false,
+            "color": "#DC0018",
+            "emitters": [
+                {"x": 0.2, "y": 0.3, "frequency": 0.2, "amplitude": 1.5, "speed": 0.7},
+                {"x": 0.8, "y": 0.3, "frequency": 0.22, "amplitude": 1.4, "speed": 0.8},
+                {"x": 0.5, "y": 0.7, "frequency": 0.18, "amplitude": 1.6, "speed": 0.6}
+            ]
+        }
+        </script>
+    </div>
+
+    <div class="content">
+        <h1>Wave Test Page</h1>
+        <p>You should see animated red ASCII wave patterns in the background behind this text.</p>
+        
+        <div class="card">
+            <h2>Test Card</h2>
+            <p>This card has a white background, so waves won't show through it.</p>
+        </div>
+        
+        <p>The waves should be visible in the gaps around this content.</p>
+    </div>
+
+    <script>
+    (function() {
+        'use strict';
+        
+        console.log('Wave script starting...');
+
+        const CHAR_SETS = {
+            wave: ['·', '∘', '○', '◎', '⊕', '⊗', '●', '◉']
+        };
+
+        class WaveEmitter {
+            constructor(config, containerWidth, containerHeight) {
+                this.x = config.x * containerWidth;
+                this.y = config.y * containerHeight;
+                this.frequency = config.frequency || 0.3;
+                this.amplitude = config.amplitude || 1.0;
+                this.speed = config.speed || 1.0;
+                this.phase = config.phase || 0;
+            }
+
+            getIntensity(x, y, time) {
+                const dx = x - this.x;
+                const dy = y - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                const waveNumber = this.frequency;
+                const angularFrequency = this.speed;
+                const wavePhase = waveNumber * distance - angularFrequency * time + this.phase;
+                const intensity = this.amplitude * Math.sin(wavePhase);
+                const attenuation = 1 / (1 + distance * 0.015);
+                
+                return intensity * attenuation;
+            }
+        }
+
+        class ASCIIWaveRenderer {
+            constructor(container) {
+                console.log('Initializing wave renderer for:', container.id);
+                
+                this.container = container;
+                this.canvas = document.createElement('canvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.asciiCanvas = document.createElement('div');
+                this.asciiCanvas.className = 'ascii-wave-canvas';
+                this.container.appendChild(this.asciiCanvas);
+                
+                this.time = 0;
+                this.charSet = CHAR_SETS.wave;
+                this.emitters = [];
+                this.fontSize = 14;
+                this.opacity = 0.5;
+                this.threshold = 0.4;
+                this.animSpeed = 0.05;
+                
+                this.loadConfig();
+                this.resize();
+                
+                window.addEventListener('resize', () => this.resize());
+                
+                console.log('Starting animation loop...');
+                this.animate();
+            }
+
+            loadConfig() {
+                const configScript = this.container.querySelector('.wave-config');
+                if (configScript) {
+                    try {
+                        const config = JSON.parse(configScript.textContent);
+                        console.log('Loaded config:', config);
+                        
+                        this.fontSize = config.fontSize || 14;
+                        this.opacity = config.opacity || 0.5;
+                        this.threshold = config.threshold || 0.4;
+                        this.animSpeed = config.animSpeed || 0.05;
+                        
+                        this.asciiCanvas.style.fontSize = this.fontSize + 'px';
+                        this.asciiCanvas.style.lineHeight = (this.fontSize + 2) + 'px';
+                        this.asciiCanvas.style.opacity = this.opacity;
+                        this.asciiCanvas.style.color = config.color || '#000000';
+                        
+                        const rect = this.container.getBoundingClientRect();
+                        console.log('Container dimensions:', rect.width, 'x', rect.height);
+                        
+                        if (config.emitters && Array.isArray(config.emitters)) {
+                            this.emitters = config.emitters.map(e => 
+                                new WaveEmitter(e, rect.width, rect.height)
+                            );
+                            console.log('Created', this.emitters.length, 'emitters');
+                        }
+                    } catch (e) {
+                        console.error('Failed to parse wave config:', e);
+                    }
+                }
+            }
+
+            resize() {
+                const rect = this.container.getBoundingClientRect();
+                this.width = rect.width;
+                this.height = rect.height;
+                
+                const lineHeight = this.fontSize + 2;
+                this.canvas.width = Math.floor(this.width / (this.fontSize * 0.6));
+                this.canvas.height = Math.floor(this.height / lineHeight);
+                
+                console.log('Resized to grid:', this.canvas.width, 'x', this.canvas.height);
+                
+                const configScript = this.container.querySelector('.wave-config');
+                if (configScript && this.emitters.length > 0) {
+                    const config = JSON.parse(configScript.textContent);
+                    this.emitters = config.emitters.map(e => 
+                        new WaveEmitter(e, this.width, this.height)
+                    );
+                }
+            }
+
+            getCombinedIntensity(x, y, time) {
+                if (!this.emitters || this.emitters.length === 0) return 0;
+                
+                let totalIntensity = 0;
+                for (let emitter of this.emitters) {
+                    totalIntensity += emitter.getIntensity(x, y, time);
+                }
+                
+                const normalizedIntensity = (totalIntensity + this.emitters.length) / (2 * this.emitters.length);
+                return Math.max(0, Math.min(1, normalizedIntensity));
+            }
+
+            render() {
+                let asciiOutput = '';
+                const scaleX = this.width / this.canvas.width;
+                const scaleY = this.height / this.canvas.height;
+                
+                for (let gridY = 0; gridY < this.canvas.height; gridY++) {
+                    for (let gridX = 0; gridX < this.canvas.width; gridX++) {
+                        const x = gridX * scaleX;
+                        const y = gridY * scaleY;
+                        const intensity = this.getCombinedIntensity(x, y, this.time);
+                        
+                        if (intensity > this.threshold) {
+                            const normalizedIntensity = (intensity - this.threshold) / (1 - this.threshold);
+                            const charIndex = Math.floor(normalizedIntensity * (this.charSet.length - 1));
+                            const char = this.charSet[Math.min(charIndex, this.charSet.length - 1)];
+                            asciiOutput += char;
+                        } else {
+                            asciiOutput += ' ';
+                        }
+                    }
+                    asciiOutput += '\n';
+                }
+                
+                this.asciiCanvas.textContent = asciiOutput;
+            }
+
+            animate() {
+                this.time += this.animSpeed;
+                this.render();
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        function initWaveContainers() {
+            const containers = document.querySelectorAll('.ascii-wave-container');
+            console.log('Found', containers.length, 'wave containers');
+            
+            containers.forEach(container => {
+                new ASCIIWaveRenderer(container);
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initWaveContainers);
+        } else {
+            initWaveContainers();
+        }
+    })();
+    </script>
+</body>
+</html>

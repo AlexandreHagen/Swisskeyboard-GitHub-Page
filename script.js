@@ -263,6 +263,15 @@ function stopAutoPlay() {
 function init() {
     initMap();
 
+    // Initialize hero video renderer
+    // To use: call initHeroVideoRenderer('path/to/your/video.mp4') when video is ready
+    // Example:
+    // setTimeout(() => {
+    //     if (typeof initHeroVideoRenderer === 'function') {
+    //         initHeroVideoRenderer('videos/hero-video.mp4');
+    //     }
+    // }, 1000);
+
     // Start with Zürich after delay
     setTimeout(() => {
         selectCanton('ZH');

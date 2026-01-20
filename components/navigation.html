@@ -1,41 +1,409 @@
-<!-- Mondrian Grid Navigation -->
-<nav class="mondrian-nav">
-    <div class="grid-container">
-        <!-- Logo -->
-        <div class="grid-cell logo">CH<span style="font-size: 0.4em; vertical-align: super;">®</span></div>
-
-        <!-- Row 1 -->
-        <div class="grid-cell blue">
-            <span>Technologie</span>
-            <div class="dropdown-panel">
-                <div class="dropdown-item">KI & Sprache</div>
-                <div class="dropdown-item">Autocorrect</div>
-                <div class="dropdown-item">Digital Tools</div>
-            </div>
+<!-- Minimal Header with Grailed-style Logo Scramble + Language Switcher -->
+<header class="minimal-header" id="minimalHeader">
+    <div class="brand-container">
+        <div class="brand-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-35 -35 70 70">
+                <!-- Edelweiss Logo - Geometric concentric circles -->
+                
+                <!-- Outermost ring: · (smallest dots) -->
+                <circle cx="-30" cy="0" r="1" fill="#1a1a1a"/>
+                <circle cx="30" cy="0" r="1" fill="#1a1a1a"/>
+                <circle cx="0" cy="-30" r="1" fill="#1a1a1a"/>
+                <circle cx="0" cy="30" r="1" fill="#1a1a1a"/>
+                <circle cx="-20" cy="-20" r="1" fill="#1a1a1a"/>
+                <circle cx="20" cy="-20" r="1" fill="#1a1a1a"/>
+                <circle cx="-20" cy="20" r="1" fill="#1a1a1a"/>
+                <circle cx="20" cy="20" r="1" fill="#1a1a1a"/>
+                
+                <!-- Second ring: ∘ (small circles) -->
+                <circle cx="-20" cy="-10" r="2" fill="#333"/>
+                <circle cx="20" cy="-10" r="2" fill="#333"/>
+                <circle cx="-20" cy="10" r="2" fill="#333"/>
+                <circle cx="20" cy="10" r="2" fill="#333"/>
+                <circle cx="-10" cy="-20" r="2" fill="#333"/>
+                <circle cx="10" cy="-20" r="2" fill="#333"/>
+                <circle cx="-10" cy="20" r="2" fill="#333"/>
+                <circle cx="10" cy="20" r="2" fill="#333"/>
+                
+                <!-- Third ring: ○ (medium circles) -->
+                <circle cx="-20" cy="0" r="3.5" fill="#555"/>
+                <circle cx="20" cy="0" r="3.5" fill="#555"/>
+                <circle cx="0" cy="-20" r="3.5" fill="#555"/>
+                <circle cx="0" cy="20" r="3.5" fill="#555"/>
+                <circle cx="-10" cy="-10" r="3.5" fill="#555"/>
+                <circle cx="10" cy="-10" r="3.5" fill="#555"/>
+                <circle cx="-10" cy="10" r="3.5" fill="#555"/>
+                <circle cx="10" cy="10" r="3.5" fill="#555"/>
+                
+                <!-- Fourth ring: ◎ (larger circles) -->
+                <circle cx="-10" cy="0" r="5" fill="#777"/>
+                <circle cx="10" cy="0" r="5" fill="#777"/>
+                <circle cx="0" cy="-10" r="5" fill="#777"/>
+                <circle cx="0" cy="10" r="5" fill="#777"/>
+                
+                <!-- Center: ● (largest, filled) -->
+                <circle cx="0" cy="0" r="7" fill="#1a1a1a"/>
+            </svg>
         </div>
-        <div class="grid-cell gray">
-            <span>Archiv</span>
-            <div class="dropdown-panel">
-                <div class="dropdown-item">Dialekte</div>
-                <div class="dropdown-item">Kantone</div>
-                <div class="dropdown-item">Preservation</div>
-            </div>
-        </div>
-        <div class="grid-cell yellow">
-            <span>Demo</span>
-        </div>
-
-        <!-- Row 2 -->
-        <div class="grid-cell red">
-            <span>Über</span>
-            <div class="dropdown-panel">
-                <div class="dropdown-item">Mission</div>
-                <div class="dropdown-item">Team</div>
-                <div class="dropdown-item">Forschung</div>
-            </div>
-        </div>
-        <div class="grid-cell">
-            <span>Kontakt</span>
-        </div>
+        <div class="brand-mark" id="brandMark" data-text="SwissKeyboard" data-i18n="nav.brand">SwissKeyboard</div>
     </div>
-</nav>
+    <div class="language-switcher" id="language-switcher"></div>
+</header>
+
+<style>
+/* Alliance No.2 - Colophon Foundry */
+/* Add your font files to a /fonts folder and uncomment below */
+/*
+@font-face {
+    font-family: 'Alliance No.2';
+    src: url('/fonts/AllianceNo2-Regular.woff2') format('woff2'),
+         url('/fonts/AllianceNo2-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Alliance No.2';
+    src: url('/fonts/AllianceNo2-Medium.woff2') format('woff2'),
+         url('/fonts/AllianceNo2-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Alliance No.2';
+    src: url('/fonts/AllianceNo2-SemiBold.woff2') format('woff2'),
+         url('/fonts/AllianceNo2-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+*/
+
+.minimal-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 1000;
+    background: transparent;
+    pointer-events: none;
+    padding: 0 32px;
+}
+
+.brand-container {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    pointer-events: auto;
+}
+
+.brand-logo {
+    width: 56px;
+    height: 56px;
+    background: #fff;
+    border: 3px solid #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.brand-logo svg {
+    width: 100%;
+    height: 100%;
+}
+
+.brand-logo:hover {
+    border-color: #DC0018;
+}
+
+.brand-mark {
+    font-family: 'Alliance No.2', 'Alliance No 2', 'Alliance', 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    cursor: default;
+    transition: all 0.3s ease;
+    /* Match page aesthetic */
+    background: #fff;
+    padding: 12px 20px;
+    border: 3px solid #1a1a1a;
+    border-left: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.brand-mark::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #DC0018;
+}
+
+/* Hover effect */
+.brand-mark:hover {
+    border-color: #DC0018;
+}
+
+/* Fade slightly on scroll */
+.minimal-header.scrolled .brand-container {
+    opacity: 0.85;
+    transform: scale(0.95);
+}
+
+.minimal-header.scrolled-far .brand-container {
+    opacity: 0.7;
+    transform: scale(0.9);
+}
+
+/* Language Switcher Styles - Matches brand aesthetic */
+.language-switcher {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: auto;
+    z-index: 1001;
+}
+
+.lang-current {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 16px;
+    background: #fff;
+    border: 3px solid #1a1a1a;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.lang-current:hover {
+    border-color: #DC0018;
+}
+
+.language-switcher.open .lang-current {
+    border-color: #DC0018;
+    border-bottom-color: #fff;
+}
+
+.lang-code {
+    color: #1a1a1a;
+}
+
+.lang-arrow {
+    transition: transform 0.2s ease;
+    color: #1a1a1a;
+    font-size: 8px;
+}
+
+.language-switcher.open .lang-arrow {
+    transform: rotate(180deg);
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: calc(100% - 3px);
+    right: 0;
+    left: 0;
+    background: #fff;
+    border: 3px solid #DC0018;
+    border-top: none;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: all 0.15s ease;
+}
+
+.language-switcher.open .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.lang-option {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-align: left;
+    text-transform: uppercase;
+    transition: all 0.15s ease;
+    color: #1a1a1a;
+}
+
+.lang-option:last-child {
+    border-bottom: none;
+}
+
+.lang-option:hover {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.lang-option.active {
+    background: #DC0018;
+    color: #fff;
+    font-weight: 600;
+}
+
+.lang-name {
+    color: inherit;
+}
+
+@media (max-width: 768px) {
+    .minimal-header {
+        height: 64px;
+        padding: 0 24px;
+    }
+    
+    .brand-logo {
+        width: 40px;
+        border-width: 2px;
+        padding: 6px;
+    }
+    
+    .brand-logo svg {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .brand-mark {
+        font-size: 11px;
+        padding: 10px 14px;
+        border-width: 2px;
+    }
+    
+    .brand-mark::before {
+        width: 3px;
+    }
+
+    .language-switcher {
+        right: 24px;
+    }
+
+    .lang-current {
+        padding: 10px 12px;
+        border-width: 2px;
+    }
+    
+    .lang-option {
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .minimal-header {
+        height: 56px;
+        padding: 0 12px;
+    }
+    
+    .brand-logo {
+        width: 32px;
+        padding: 4px;
+    }
+    
+    .brand-logo svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .brand-mark {
+        font-size: 10px;
+        padding: 8px 12px;
+    }
+    
+    .brand-mark::before {
+        width: 2px;
+    }
+
+    .language-switcher {
+        right: 16px;
+    }
+
+    .lang-current {
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+    
+    .lang-dropdown {
+        border-width: 2px;
+    }
+    
+    .lang-option {
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+
+    .lang-arrow {
+        display: none;
+    }
+}
+</style>
+
+<script>
+(function() {
+    'use strict';
+    
+    const header = document.getElementById('minimalHeader');
+    if (!header) return;
+    
+    // ═══════════════════════════════════════════════════════════════════════
+    // SCROLL BEHAVIOR
+    // ═══════════════════════════════════════════════════════════════════════
+    
+    let ticking = false;
+    
+    function updateHeader() {
+        const scrollY = window.scrollY;
+        
+        header.classList.remove('scrolled', 'scrolled-far');
+        
+        if (scrollY > 300) {
+            header.classList.add('scrolled-far');
+        } else if (scrollY > 100) {
+            header.classList.add('scrolled');
+        }
+        
+        ticking = false;
+    }
+    
+    function onScroll() {
+        if (!ticking) {
+            requestAnimationFrame(updateHeader);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    updateHeader();
+})();
+</script>

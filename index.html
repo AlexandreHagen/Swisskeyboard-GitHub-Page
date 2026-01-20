@@ -1,12 +1,89 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swiss Dialects - Digital Preservation</title>
+    <title>Swiss Voice Keyboard - Souveräne Tastatur für Schweizer Dialekte</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ASCII Wave Interference Styles */
+        .ascii-wave-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+            background: #FAFAFA;
+        }
+
+        .wave-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Fade masks */
+        .ascii-wave-container.fade-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to bottom, 
+                rgba(250, 250, 250, 1) 0%, 
+                rgba(250, 250, 250, 0) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .ascii-wave-container.fade-bottom::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to top, 
+                rgba(250, 250, 250, 1) 0%, 
+                rgba(250, 250, 250, 0) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+    </style>
 </head>
 <body>
+    <!-- Wave Interference Background (Canvas-based, SEO-safe) -->
+    <div class="ascii-wave-container" id="waveInterference1" aria-hidden="true" role="presentation" data-nosnippet>
+        <canvas class="wave-canvas"></canvas>
+        <script type="application/json" class="wave-config">
+        {
+            "fontSize": 11,
+            "opacity": 0.42,
+            "threshold": 0.44,
+            "animSpeed": 0.08,
+            "fadeTop": false,
+            "fadeBottom": false,
+            "color": "#DC0018",
+            "emitters": [
+                {"x": 0.0, "y": 0.2, "frequency": 0.06, "amplitude": 2.8, "speed": 0.3},
+                {"x": 0.0, "y": 0.7, "frequency": 0.12, "amplitude": 1.4, "speed": 0.5},
+                {"x": 1.0, "y": 0.35, "frequency": 0.08, "amplitude": 2.2, "speed": 0.38},
+                {"x": 1.0, "y": 0.85, "frequency": 0.18, "amplitude": 0.9, "speed": 0.65},
+                {"x": 0.3, "y": 0.0, "frequency": 0.10, "amplitude": 1.8, "speed": 0.42},
+                {"x": 0.75, "y": 0.0, "frequency": 0.22, "amplitude": 0.7, "speed": 0.75},
+                {"x": 0.5, "y": 1.0, "frequency": 0.14, "amplitude": 1.2, "speed": 0.55}
+            ]
+        }
+        </script>
+    </div>
+
     <!-- Navigation Component -->
     <div id="navigation"></div>
 
@@ -40,6 +117,194 @@
         <div id="cta-section"></div>
     </main>
 
+    <!-- Wave Interference Script (Canvas-based, SEO-safe) -->
+    <script>
+    (function() {
+        'use strict';
+
+        // Character sets for wave rendering (drawn on canvas, not as text)
+        const CHAR_SETS = {
+            wave: ['·', '∘', '○', '◎', '⊕', '⊗', '●', '◉'],
+            dense: ['░', '▒', '▓', '█'],
+            ripple: ['.', ':', '∴', '∵', '⋮', '○', '◉', '●']
+        };
+
+        class WaveEmitter {
+            constructor(config, containerWidth, containerHeight) {
+                this.x = config.x * containerWidth;
+                this.y = config.y * containerHeight;
+                this.frequency = config.frequency || 0.3;
+                this.amplitude = config.amplitude || 1.0;
+                this.speed = config.speed || 1.0;
+                this.phase = config.phase || 0;
+            }
+
+            getIntensity(x, y, time) {
+                const dx = x - this.x;
+                const dy = y - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                const waveNumber = this.frequency;
+                const angularFrequency = this.speed;
+                const wavePhase = waveNumber * distance - angularFrequency * time + this.phase;
+                const intensity = this.amplitude * Math.sin(wavePhase);
+                const attenuation = 1 / (1 + distance * 0.02);
+                
+                return intensity * attenuation;
+            }
+        }
+
+        class CanvasWaveRenderer {
+            constructor(container) {
+                this.container = container;
+                this.canvas = container.querySelector('.wave-canvas');
+                if (!this.canvas) {
+                    this.canvas = document.createElement('canvas');
+                    this.canvas.className = 'wave-canvas';
+                    this.container.appendChild(this.canvas);
+                }
+                this.ctx = this.canvas.getContext('2d');
+                
+                this.time = 0;
+                this.charSet = CHAR_SETS.wave;
+                this.dpr = window.devicePixelRatio || 1;
+                
+                // Load configuration from JSON script tag
+                this.loadConfig();
+                
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+                this.animate();
+            }
+
+            loadConfig() {
+                const configScript = this.container.querySelector('.wave-config');
+                if (configScript) {
+                    try {
+                        const config = JSON.parse(configScript.textContent);
+                        
+                        this.fontSize = config.fontSize || 18;
+                        this.opacity = config.opacity || 0.35;
+                        this.threshold = config.threshold || 0.6;
+                        this.animSpeed = config.animSpeed || 0.08;
+                        this.color = config.color || '#000000';
+                        
+                        // Apply fade classes
+                        if (config.fadeTop) this.container.classList.add('fade-top');
+                        if (config.fadeBottom) this.container.classList.add('fade-bottom');
+                        
+                        // Initialize emitters
+                        this.emitters = [];
+                        if (config.emitters && Array.isArray(config.emitters)) {
+                            const rect = this.container.getBoundingClientRect();
+                            this.emitters = config.emitters.map(e => 
+                                new WaveEmitter(e, rect.width, rect.height)
+                            );
+                        }
+                    } catch (e) {
+                        console.error('Failed to parse wave config:', e);
+                    }
+                }
+            }
+
+            resize() {
+                const rect = this.container.getBoundingClientRect();
+                this.width = rect.width;
+                this.height = rect.height;
+                
+                // Set canvas size with device pixel ratio for crisp text
+                this.canvas.width = this.width * this.dpr;
+                this.canvas.height = this.height * this.dpr;
+                this.canvas.style.width = this.width + 'px';
+                this.canvas.style.height = this.height + 'px';
+                
+                // Calculate grid dimensions
+                this.cellWidth = this.fontSize * 0.6;
+                this.cellHeight = this.fontSize + 2;
+                this.cols = Math.floor(this.width / this.cellWidth);
+                this.rows = Math.floor(this.height / this.cellHeight);
+                
+                // Re-initialize emitters with new dimensions
+                if (this.emitters && this.emitters.length > 0) {
+                    const configScript = this.container.querySelector('.wave-config');
+                    if (configScript) {
+                        const config = JSON.parse(configScript.textContent);
+                        this.emitters = config.emitters.map(e => 
+                            new WaveEmitter(e, this.width, this.height)
+                        );
+                    }
+                }
+            }
+
+            getCombinedIntensity(x, y, time) {
+                if (!this.emitters || this.emitters.length === 0) return 0;
+                
+                let totalIntensity = 0;
+                for (let emitter of this.emitters) {
+                    totalIntensity += emitter.getIntensity(x, y, time);
+                }
+                
+                const normalizedIntensity = (totalIntensity + this.emitters.length) / (2 * this.emitters.length);
+                return Math.max(0, Math.min(1, normalizedIntensity));
+            }
+
+            render() {
+                const ctx = this.ctx;
+                ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                // Scale for device pixel ratio
+                ctx.save();
+                ctx.scale(this.dpr, this.dpr);
+                
+                // Set font and color
+                ctx.font = `${this.fontSize}px 'Courier New', monospace`;
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                ctx.textBaseline = 'top';
+                
+                for (let gridY = 0; gridY < this.rows; gridY++) {
+                    for (let gridX = 0; gridX < this.cols; gridX++) {
+                        const x = gridX * this.cellWidth;
+                        const y = gridY * this.cellHeight;
+                        const intensity = this.getCombinedIntensity(x, y, this.time);
+                        
+                        if (intensity > this.threshold) {
+                            const normalizedIntensity = (intensity - this.threshold) / (1 - this.threshold);
+                            const charIndex = Math.floor(normalizedIntensity * (this.charSet.length - 1));
+                            const char = this.charSet[Math.min(charIndex, this.charSet.length - 1)];
+                            ctx.fillText(char, x, y);
+                        }
+                    }
+                }
+                
+                ctx.restore();
+            }
+
+            animate() {
+                this.time += this.animSpeed;
+                this.render();
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        // Auto-initialize all wave containers on page load
+        function initWaveContainers() {
+            document.querySelectorAll('.ascii-wave-container').forEach(container => {
+                new CanvasWaveRenderer(container);
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initWaveContainers);
+        } else {
+            initWaveContainers();
+        }
+    })();
+    </script>
+
+    <!-- Load i18n system first -->
+    <script src="js/i18n.js"></script>
+
     <!-- Load components -->
     <script>
         // Function to load HTML component
@@ -48,6 +313,20 @@
                 const response = await fetch(componentPath);
                 const html = await response.text();
                 document.getElementById(elementId).innerHTML = html;
+                
+                // Execute any scripts within the loaded component
+                const container = document.getElementById(elementId);
+                const scripts = container.querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    if (script.src) {
+                        newScript.src = script.src;
+                    } else {
+                        newScript.textContent = script.textContent;
+                    }
+                    document.body.appendChild(newScript);
+                    script.remove();
+                });
             } catch (error) {
                 console.error(`Error loading component ${componentPath}:`, error);
             }
@@ -67,6 +346,12 @@
                 loadComponent('social-proof', 'components/social-proof.html'),
                 loadComponent('cta-section', 'components/cta-section.html')
             ]);
+
+            // After components are loaded, initialize i18n system
+            if (window.i18n && typeof window.i18n.init === 'function') {
+                // Initialize i18n now that all components are loaded
+                window.i18n.init();
+            }
 
             // After components are loaded, load and initialize the main script
             const script = document.createElement('script');

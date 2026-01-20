@@ -1,0 +1,18 @@
+<!-- Hero Video Character Renderer -->
+<div class="hero-video-renderer">
+    <div class="renderer-window">
+        <video id="hero-video-source" class="video-source" preload="auto" muted loop playsinline>
+            <!-- Video source will be set via JavaScript -->
+            <source id="hero-video-src" src="" type="video/mp4">
+        </video>
+        <canvas id="hero-video-canvas" class="video-canvas"></canvas>
+        <div id="hero-character-display" class="character-display"></div>
+    </div>
+    <div class="renderer-controls">
+        <button id="renderer-play-pause" class="control-btn" aria-label="Play/Pause">
+            <span class="play-icon">▶</span>
+            <span class="pause-icon">⏸</span>
+        </button>
+    </div>
+</div>
+
