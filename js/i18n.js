@@ -51,15 +51,17 @@
         // 1. Check URL parameter
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
-        if (urlLang && SUPPORTED_LANGUAGES.includes(urlLang)) {
-            localStorage.setItem(STORAGE_KEY, urlLang);
-            return urlLang;
+        const normalizedUrlLang = normalizeLanguage(urlLang);
+        if (normalizedUrlLang) {
+            localStorage.setItem(STORAGE_KEY, normalizedUrlLang);
+            return normalizedUrlLang;
         }
 
         // 2. Check localStorage
         const storedLang = localStorage.getItem(STORAGE_KEY);
-        if (storedLang && SUPPORTED_LANGUAGES.includes(storedLang)) {
-            return storedLang;
+        const normalizedStoredLang = normalizeLanguage(storedLang);
+        if (normalizedStoredLang) {
+            return normalizedStoredLang;
         }
 
         // 3. Check browser language
@@ -76,14 +78,57 @@
      * Get browser's preferred language
      */
     function getBrowserLanguage() {
-        const browserLang = navigator.language || navigator.userLanguage;
-        const shortLang = browserLang.split('-')[0].toLowerCase();
-        
-        if (SUPPORTED_LANGUAGES.includes(shortLang)) {
-            return shortLang;
+        const browserLangs = Array.isArray(navigator.languages) && navigator.languages.length
+            ? navigator.languages
+            : [navigator.language || navigator.userLanguage].filter(Boolean);
+
+        for (const lang of browserLangs) {
+            const normalized = normalizeLanguage(lang);
+            if (normalized) {
+                return normalized;
+            }
         }
-        
+
         return null;
+    }
+
+    /**
+     * Normalize language tags to supported languages
+     * Examples: "fr-CH" -> "fr", "de_CH" -> "de"
+     */
+    function normalizeLanguage(lang) {
+        if (!lang || typeof lang !== 'string') return null;
+        const normalized = lang.replace('_', '-').toLowerCase().trim();
+        if (!normalized) return null;
+
+        // Exact match (already supported)
+        if (SUPPORTED_LANGUAGES.includes(normalized)) {
+            return normalized;
+        }
+
+        // Regional variants -> base language
+        const base = normalized.split('-')[0];
+        if (SUPPORTED_LANGUAGES.includes(base)) {
+            return base;
+        }
+
+        // Common Swiss/local variants mapping
+        const map = {
+            'de-ch': 'de',
+            'de-at': 'de',
+            'de-de': 'de',
+            'fr-ch': 'fr',
+            'fr-fr': 'fr',
+            'fr-ca': 'fr',
+            'it-ch': 'it',
+            'it-it': 'it',
+            'rm-ch': 'rm',
+            'en-ch': 'en',
+            'en-us': 'en',
+            'en-gb': 'en'
+        };
+
+        return map[normalized] || null;
     }
 
     /**
