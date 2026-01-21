@@ -12,6 +12,7 @@
     
     let translations = {};
     let currentLanguage = DEFAULT_LANGUAGE;
+    const TRANSLATIONS_VERSION = '2026-01-21-1';
 
     /**
      * Initialize the i18n system
@@ -19,7 +20,7 @@
     async function init() {
         // Load translations
         try {
-            const response = await fetch('js/translations.json');
+            const response = await fetch(`js/translations.json?v=${TRANSLATIONS_VERSION}`);
             translations = await response.json();
         } catch (error) {
             console.error('Failed to load translations:', error);
