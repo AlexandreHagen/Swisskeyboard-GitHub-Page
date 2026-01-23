@@ -1,7 +1,7 @@
 {
   "de": {
     "meta": {
-      "title": "Swiss Voice Keyboard - Souveräne Tastatur für Schweizer Dialekte",
+      "title": "SwissKeyboard - Sprachgesteuerte Tastatur für Schweizer Dialekte",
       "lang": "de"
     },
     "nav": {
@@ -9,8 +9,8 @@
       "download": "Download"
     },
     "hero": {
-      "title": "Dini Stimm. Dini Souveränität.",
-      "subtitle": "Big Tech behandelt deinen Dialekt als Fehler. Wir haben eine Alternative gebaut – entwickelt in der Schweiz, für die Schweiz. Keine Silicon-Valley-Korrektur. Keine fremden Server. Nur du und deine Sprache."
+      "title": "Hör uf tippe. Fang a rede.",
+      "subtitle": "SwissKeyboard ist eine Spracheingabe-Tastatur für dein Handy. Tipp aufs Mikrofon, sprich natürlich, und sieh zu, wie deine Worte zu Text werden – sofort. Schreib Nachrichten, E-Mails und Notizen 3x schneller als mit Tippen. Und anders als bei Big Tech verstehen wir auch Schweizerdeutsch."
     },
     "badges": {
       "helperText": "Jetzt kostenlos ausprobieren",
@@ -27,95 +27,118 @@
     "form": {
       "emailInvalid": "Bitte eine gültige E-Mail-Adresse eingeben"
     },
+    "whyVoice": {
+      "sectionTitle": "Warum Spracheingabe?",
+      "speed": {
+        "title": "3x schneller schreiben",
+        "description": "Sprechen ist schneller als Tippen. Eine Nachricht, die 30 Sekunden zum Tippen braucht, ist in 10 Sekunden gesagt."
+      },
+      "anywhere": {
+        "title": "Überall schreiben",
+        "description": "Beim Laufen, Pendeln, Kochen. Spracheingabe funktioniert, wenn deine Hände nicht können."
+      },
+      "natural": {
+        "title": "Natürlicher schreiben",
+        "description": "Wenn du sprichst, fliessen deine Gedanken. Kein Starren auf die Tastatur, kein Buchstabensuchen."
+      },
+      "accessible": {
+        "title": "Für alle zugänglich",
+        "description": "Für Menschen mit eingeschränkter Mobilität, Legasthenie oder Sehbehinderung – Sprechen ist einfacher."
+      }
+    },
+    "problem": {
+      "sectionTitle": "Das Problem mit Spracheingabe heute",
+      "description": "Dein Handy hat schon Spracheingabe. Warum nutzt sie niemand? Weil sie nicht funktioniert – nicht wenn du Schweizerdeutsch sprichst. Du tippst aufs Mikrofon, sagst etwas auf Züritüütsch, und Apple \"korrigiert\" es zu Hochdeutsch. Oder Kauderwelsch. Dein Dialekt wird zum Fehler."
+    },
     "infoGrid": {
       "voiceToText": {
-        "title": "Sprachsouveränität",
-        "description": "Deine Sprache verdient Respekt – nicht Korrektur durch fremde Algorithmen."
+        "title": "Endlich verstanden",
+        "description": "Spracheingabe, die Züritüütsch, Bärndütsch, Baseldütsch und jeden Dialekt dazwischen versteht."
       },
       "aiRecognition": {
         "title": "Swiss-Made KI",
-        "description": "Trainiert mit echten Dialekten von echten Schweizern – nicht mit Hochdeutsch aus Berlin."
+        "description": "Trainiert mit echten Schweizer Stimmen – nicht mit Hochdeutsch aus Berlin."
       },
       "speed": {
-        "title": "Keine Kompromisse",
-        "description": "Schnell, präzis und unabhängig. Du musst dich nicht zwischen Effizienz und Werten entscheiden."
+        "title": "Schnell & präzis",
+        "description": "Sprich in normalem Tempo. Deine Worte erscheinen als Text – akkurat und sofort."
       }
     },
     "features": {
-      "sectionTitle": "Wofür wir stehen",
+      "sectionTitle": "Was uns unterscheidet",
       "naturalSpeech": {
-        "title": "Deine Sprache, nicht ihre",
-        "description": "Big Tech sagt, dein Dialekt sei ein Fehler. Wir sagen: Er ist Kultur. Sprich so, wie du bist."
+        "title": "Hyperlokal genau",
+        "description": "Wir erkennen nicht nur \"Schweizerdeutsch\". Wir verstehen die Unterschiede zwischen Bern, Zürich, Basel und darüber hinaus."
       },
       "everyRegion": {
-        "title": "Von Schweizern, für Schweizer",
-        "description": "Entwickelt in der Schweiz. Trainiert mit Schweizer Stimmen. Gebaut für Schweizer Interessen."
+        "title": "Funktioniert überall",
+        "description": "Messages, WhatsApp, E-Mail, Notizen, Social Media – jedes Textfeld auf deinem Handy. Eine Tastatur für alles."
       },
       "saveTime": {
-        "title": "Freiheit zurückgewinnen",
-        "description": "Warum solltest du dich an fremde Systeme anpassen? Diktiere in deinem Dialekt – die Technologie passt sich dir an."
+        "title": "Lernt ständig dazu",
+        "description": "Unsere KI verbessert sich mit jedem Update, trainiert darauf, wie Schweizer wirklich sprechen."
       },
       "worksEverywhere": {
-        "title": "Unabhängigkeit überall",
-        "description": "In jeder App, auf jedem Gerät. Ohne Kompromisse an deine Identität oder deine Daten."
+        "title": "Privatsphäre zuerst",
+        "description": "Gebaut in der Schweiz mit Schweizer Datenschutz-Werten. Keine fremden Server. Kein verstecktes Datensammeln."
       },
       "focusedExperience": {
-        "title": "Volle Konzentration",
-        "description": "Keine Ablenkung. Keine Unterbrechung. Nur du und deine Worte."
+        "title": "Unabhängig",
+        "description": "Kein Big-Tech-Eigentum. Keine Silicon-Valley-Investoren. Wir bauen für Nutzer, nicht für Werbekunden."
       },
       "communityDriven": {
         "title": "Mit der Community entwickelt",
-        "description": "Dein Feedback formt das Produkt. Wir bauen gemeinsam, nicht im stillen Kämmerlein."
+        "description": "Dein Feedback formt das Produkt. Wir bauen gemeinsam, nicht hinter verschlossenen Türen."
       }
     },
     "howItWorks": {
       "sectionTitle": "So funktioniert's",
       "step1": {
-        "title": "App installieren",
-        "description": "Lade die App herunter und richte die Tastatur ein – dauert nur wenige Minuten."
+        "title": "Tastatur hinzufügen",
+        "description": "Lade die App herunter, aktiviere sie in den Einstellungen. Dauert unter zwei Minuten – kein Konto nötig."
       },
       "step2": {
-        "title": "Sprich wie gewohnt",
-        "description": "Drücke das Mikrofon und sprich in deinem Dialekt. Die KI lernt ständig dazu."
+        "title": "Mikrofon antippen",
+        "description": "Öffne irgendeine App – Messages, WhatsApp, E-Mail. Tipp auf das Mikrofon bei SwissKeyboard."
       },
       "step3": {
-        "title": "Text entsteht",
-        "description": "Deine Worte werden transkribiert. Mit jedem Update wird die Erkennung besser."
+        "title": "Natürlich sprechen",
+        "description": "Sprich in deinem Dialekt, in deinem Tempo. Deine Worte erscheinen als Text – akkurat, sofort. Fertig."
       }
     },
     "useCases": {
       "sectionTitle": "Für wen ist das?",
       "dailyCommunication": {
-        "title": "Digitale Selbstbestimmung",
-        "description": "Schreib so, wie du sprichst. Ohne Fremdkorrektur. Ohne dass ein Algorithmus entscheidet, was 'richtig' ist."
+        "title": "Menschen, die schneller schreiben wollen",
+        "description": "Wenn du viele Nachrichten, E-Mails oder Notizen schreibst, spart Spracheingabe echte Zeit – jeden Tag."
       },
       "productivity": {
-        "title": "Effizient & souverän",
-        "description": "Schneller texten, ohne deine Daten zu verschenken. Produktivität ohne Preis."
+        "title": "Menschen unterwegs",
+        "description": "Pendeln, zwischen Meetings laufen, Besorgungen machen. Sprich deine Nachrichten, statt anzuhalten zum Tippen."
       },
       "professional": {
-        "title": "Für die, die nicht kompromittieren",
-        "description": "Journalisten, Forscher, Kulturschaffende – alle, die Wert auf Unabhängigkeit legen."
+        "title": "Eltern & Pflegende",
+        "description": "Baby auf dem Arm, Abendessen kochen, Chaos managen. Spracheingabe funktioniert, wenn deine Hände voll sind."
       },
       "cultural": {
-        "title": "Sprachschutz ist Kulturschutz",
-        "description": "Jeder Dialekt, den du digital bewahrst, ist ein Stück Schweiz, das nicht verloren geht."
+        "title": "Barrierefreiheit",
+        "description": "Für alle, denen Tippen schwerfällt – eingeschränkte Mobilität, Legasthenie, Sehbehinderung. Sprechen ist einfacher."
       },
       "accessibility": {
-        "title": "Barrierefreiheit",
-        "description": "Für Menschen mit eingeschränkter Mobilität, Legasthenie oder Sehbehinderung. Sprechen statt tippen."
+        "title": "Alle, die genug von \"Korrekturen\" haben",
+        "description": "Wenn du je gesehen hast, wie dein Handy deinen Dialekt in Hochdeutsch oder Kauderwelsch verwandelt – das ist für dich."
       },
       "elderly": {
         "title": "Für jedes Alter",
-        "description": "Intuitive Bedienung für alle Generationen. Keine komplizierte Technik – einfach sprechen."
+        "description": "Einfach genug für alle. Keine komplizierte Technik – einfach sprechen."
       },
       "expats": {
         "title": "Schweizer im Ausland",
-        "description": "Bleib verbunden mit deiner Heimat. Schreib in deinem Dialekt, egal wo du bist."
+        "description": "Im Ausland leben? Bleib verbunden mit der Heimat. Schreib in deinem Dialekt, egal wo du bist."
       },
       "families": {
-        "title": "Für Familien",
-        "description": "Beschäftigte Hände? Sprich einfach. Perfekt für Eltern, die multitasken müssen."
+        "title": "Kulturschutz",
+        "description": "Jeder Dialekt, den du digital bewahrst, ist ein Stück Schweiz, das nicht verloren geht."
       }
     },
     "values": {
@@ -141,11 +164,11 @@
       }
     },
     "earlyAdopter": {
-      "text": "Wir sind ein junges Projekt. Werde einer der Ersten, die digitale Sprachsouveränität leben."
+      "text": "Wir bauen die Spracheingabe-Tastatur, die Big Tech nicht baut. Sei einer der Ersten, die sie ausprobieren."
     },
     "cta": {
       "title": "Sei dabei von Anfang an",
-      "description": "Ein Schweizer Projekt braucht Schweizer Unterstützung. Kein Venture Capital aus dem Ausland. Keine fremden Interessen. Nur eine Mission: Deine Sprache schützen.",
+      "description": "Ein Schweizer Projekt braucht Schweizer Unterstützung. Kein Venture Capital aus dem Ausland. Keine fremden Interessen. Nur eine Mission: Technologie, die deine Stimme versteht.",
       "emailPlaceholder": "Deine E-Mail Adresse",
       "subscribe": "Dabei sein",
       "emailSubject": "Anmeldung Beta-Programm",
@@ -166,7 +189,7 @@
   },
   "fr": {
     "meta": {
-      "title": "Swiss Voice Keyboard - Clavier souverain pour dialectes suisses",
+      "title": "SwissKeyboard - Clavier vocal pour dialectes suisses",
       "lang": "fr"
     },
     "nav": {
@@ -174,8 +197,8 @@
       "download": "Télécharger"
     },
     "hero": {
-      "title": "Ta voix. Ta souveraineté.",
-      "subtitle": "Les géants de la tech traitent ton dialecte comme une erreur. Nous avons construit une alternative – développée en Suisse, pour la Suisse. Pas de correction Silicon Valley. Pas de serveurs étrangers. Juste toi et ta langue."
+      "title": "Arrête de taper. Commence à parler.",
+      "subtitle": "SwissKeyboard est un clavier vocal pour ton téléphone. Appuie sur le micro, parle naturellement, et regarde tes mots devenir du texte – instantanément. Écris tes messages, e-mails et notes 3x plus vite qu'en tapant. Et contrairement à Big Tech, on comprend vraiment le suisse allemand."
     },
     "badges": {
       "helperText": "Essayez gratuitement",
@@ -192,95 +215,118 @@
     "form": {
       "emailInvalid": "Veuillez saisir une adresse e-mail valide"
     },
+    "whyVoice": {
+      "sectionTitle": "Pourquoi la saisie vocale?",
+      "speed": {
+        "title": "Écrire 3x plus vite",
+        "description": "Parler est plus rapide que taper. Un message qui prend 30 secondes à taper se dit en 10 secondes."
+      },
+      "anywhere": {
+        "title": "Écrire partout",
+        "description": "En marchant, dans les transports, en cuisinant. La saisie vocale fonctionne quand tes mains ne peuvent pas."
+      },
+      "natural": {
+        "title": "Écrire plus naturellement",
+        "description": "Quand tu parles, tes pensées coulent. Plus besoin de fixer le clavier ou chercher les lettres."
+      },
+      "accessible": {
+        "title": "Accessible à tous",
+        "description": "Pour les personnes à mobilité réduite, dyslexiques ou malvoyantes – parler est plus simple."
+      }
+    },
+    "problem": {
+      "sectionTitle": "Le problème avec la saisie vocale actuelle",
+      "description": "Ton téléphone a déjà la saisie vocale. Pourquoi personne ne l'utilise? Parce qu'elle ne marche pas – pas si tu parles suisse allemand. Tu appuies sur le micro, tu dis quelque chose en Züritüütsch, et Apple le \"corrige\" en allemand standard. Ou en charabia. Ton dialecte devient une erreur."
+    },
     "infoGrid": {
       "voiceToText": {
-        "title": "Souveraineté linguistique",
-        "description": "Ta langue mérite le respect – pas la correction par des algorithmes étrangers."
+        "title": "Enfin compris",
+        "description": "La saisie vocale qui comprend le Züritüütsch, Bärndütsch, Baseldütsch et tous les dialectes entre les deux."
       },
       "aiRecognition": {
         "title": "IA Swiss-Made",
-        "description": "Entraînée avec de vrais dialectes de vrais Suisses – pas avec l'allemand standard de Berlin."
+        "description": "Entraînée avec de vraies voix suisses – pas avec l'allemand standard de Berlin."
       },
       "speed": {
-        "title": "Sans compromis",
-        "description": "Rapide, précis et indépendant. Tu n'as pas à choisir entre efficacité et valeurs."
+        "title": "Rapide & précis",
+        "description": "Parle à ton rythme normal. Tes mots apparaissent en texte – précis et instantanés."
       }
     },
     "features": {
-      "sectionTitle": "Ce que nous défendons",
+      "sectionTitle": "Ce qui nous différencie",
       "naturalSpeech": {
-        "title": "Ta langue, pas la leur",
-        "description": "Big Tech dit que ton dialecte est une erreur. Nous disons: c'est de la culture. Parle comme tu es."
+        "title": "Précision hyperlocale",
+        "description": "On ne reconnaît pas juste \"le suisse allemand\". On comprend les différences entre Berne, Zurich, Bâle et au-delà."
       },
       "everyRegion": {
-        "title": "Par des Suisses, pour des Suisses",
-        "description": "Développé en Suisse. Entraîné avec des voix suisses. Construit pour les intérêts suisses."
+        "title": "Fonctionne partout",
+        "description": "Messages, WhatsApp, e-mail, notes, réseaux sociaux – chaque champ texte sur ton téléphone. Un clavier pour tout."
       },
       "saveTime": {
-        "title": "Reprendre ta liberté",
-        "description": "Pourquoi t'adapter à des systèmes étrangers? Dicte dans ton dialecte – la technologie s'adapte à toi."
+        "title": "Apprend constamment",
+        "description": "Notre IA s'améliore à chaque mise à jour, entraînée sur comment les Suisses parlent vraiment."
       },
       "worksEverywhere": {
-        "title": "Indépendance partout",
-        "description": "Dans chaque app, sur chaque appareil. Sans compromis sur ton identité ou tes données."
+        "title": "Vie privée d'abord",
+        "description": "Construit en Suisse avec les valeurs suisses de protection des données. Pas de serveurs étrangers. Pas de collecte cachée."
       },
       "focusedExperience": {
-        "title": "Concentration totale",
-        "description": "Pas de distraction. Pas d'interruption. Juste toi et tes mots."
+        "title": "Indépendant",
+        "description": "Pas de propriété Big Tech. Pas d'investisseurs Silicon Valley. On construit pour les utilisateurs, pas pour les annonceurs."
       },
       "communityDriven": {
         "title": "Développé avec la communauté",
-        "description": "Tes retours façonnent le produit. Nous construisons ensemble, pas en secret."
+        "description": "Tes retours façonnent le produit. On construit ensemble, pas en secret."
       }
     },
     "howItWorks": {
       "sectionTitle": "Comment ça marche",
       "step1": {
-        "title": "Installer l'app",
-        "description": "Télécharge l'app et configure le clavier – ça ne prend que quelques minutes."
+        "title": "Ajouter le clavier",
+        "description": "Télécharge l'app, active-la dans les réglages. Moins de deux minutes – pas de compte requis."
       },
       "step2": {
-        "title": "Parle comme d'habitude",
-        "description": "Appuie sur le micro et parle dans ton dialecte. L'IA apprend constamment."
+        "title": "Appuyer sur le micro",
+        "description": "Ouvre n'importe quelle app – Messages, WhatsApp, e-mail. Appuie sur le micro de SwissKeyboard."
       },
       "step3": {
-        "title": "Le texte apparaît",
-        "description": "Tes mots sont transcrits. Avec chaque mise à jour, la reconnaissance s'améliore."
+        "title": "Parler naturellement",
+        "description": "Parle dans ton dialecte, à ton rythme. Tes mots apparaissent en texte – précis, instantanés. C'est tout."
       }
     },
     "useCases": {
       "sectionTitle": "Pour qui?",
       "dailyCommunication": {
-        "title": "Autodétermination numérique",
-        "description": "Écris comme tu parles. Sans correction étrangère. Sans qu'un algorithme décide ce qui est 'correct'."
+        "title": "Ceux qui veulent écrire plus vite",
+        "description": "Si tu envoies beaucoup de messages, e-mails ou notes, la saisie vocale te fait gagner du temps – chaque jour."
       },
       "productivity": {
-        "title": "Efficace & souverain",
-        "description": "Texte plus vite sans donner tes données. Productivité sans prix."
+        "title": "Les gens en mouvement",
+        "description": "Transports, entre deux réunions, courses. Parle tes messages au lieu de t'arrêter pour taper."
       },
       "professional": {
-        "title": "Pour ceux qui ne compromettent pas",
-        "description": "Journalistes, chercheurs, créateurs culturels – tous ceux qui valorisent l'indépendance."
+        "title": "Parents & aidants",
+        "description": "Bébé dans les bras, dîner à préparer, chaos à gérer. La saisie vocale marche quand tes mains sont occupées."
       },
       "cultural": {
-        "title": "Protéger la langue, c'est protéger la culture",
-        "description": "Chaque dialecte que tu préserves digitalement est un morceau de Suisse qui ne sera pas perdu."
+        "title": "Accessibilité",
+        "description": "Pour tous ceux qui trouvent le clavier difficile – mobilité réduite, dyslexie, troubles visuels. Parler est plus facile."
       },
       "accessibility": {
-        "title": "Accessibilité",
-        "description": "Pour les personnes à mobilité réduite, dyslexiques ou malvoyantes. Parler au lieu de taper."
+        "title": "Marre des \"corrections\"",
+        "description": "Si ton téléphone a déjà transformé ton dialecte en allemand standard ou en n'importe quoi – c'est pour toi."
       },
       "elderly": {
         "title": "Pour tous les âges",
-        "description": "Utilisation intuitive pour toutes les générations. Pas de technique compliquée – parle simplement."
+        "description": "Assez simple pour tous. Pas de technique compliquée – parle simplement."
       },
       "expats": {
         "title": "Suisses à l'étranger",
-        "description": "Reste connecté à ta patrie. Écris dans ton dialecte, où que tu sois."
+        "description": "Tu vis à l'étranger? Reste connecté. Écris dans ton dialecte, où que tu sois."
       },
       "families": {
-        "title": "Pour les familles",
-        "description": "Les mains occupées? Parle simplement. Parfait pour les parents qui doivent multitâcher."
+        "title": "Protection culturelle",
+        "description": "Chaque dialecte que tu préserves digitalement est un morceau de Suisse qui ne sera pas perdu."
       }
     },
     "values": {
@@ -294,7 +340,7 @@
       },
       "transparent": {
         "title": "Transparent",
-        "description": "Nous communiquons ouvertement sur le traitement de tes données"
+        "description": "On communique ouvertement sur le traitement de tes données"
       },
       "userFirst": {
         "title": "Toi d'abord",
@@ -306,11 +352,11 @@
       }
     },
     "earlyAdopter": {
-      "text": "Nous sommes un jeune projet. Sois parmi les premiers à vivre la souveraineté linguistique numérique."
+      "text": "On construit le clavier vocal que Big Tech ne construit pas. Sois parmi les premiers à l'essayer."
     },
     "cta": {
       "title": "Rejoins-nous dès le début",
-      "description": "Un projet suisse a besoin de soutien suisse. Pas de capital-risque étranger. Pas d'intérêts étrangers. Juste une mission: protéger ta langue.",
+      "description": "Un projet suisse a besoin de soutien suisse. Pas de capital-risque étranger. Pas d'intérêts étrangers. Juste une mission: une technologie qui comprend ta voix.",
       "emailPlaceholder": "Ton adresse e-mail",
       "subscribe": "Rejoindre",
       "emailSubject": "Inscription au programme bêta",
@@ -331,7 +377,7 @@
   },
   "it": {
     "meta": {
-      "title": "Swiss Voice Keyboard - Tastiera sovrana per dialetti svizzeri",
+      "title": "SwissKeyboard - Tastiera vocale per dialetti svizzeri",
       "lang": "it"
     },
     "nav": {
@@ -339,8 +385,8 @@
       "download": "Scarica"
     },
     "hero": {
-      "title": "La tua voce. La tua sovranità.",
-      "subtitle": "Big Tech tratta il tuo dialetto come un errore. Abbiamo costruito un'alternativa – sviluppata in Svizzera, per la Svizzera. Nessuna correzione Silicon Valley. Nessun server straniero. Solo tu e la tua lingua."
+      "title": "Smetti di digitare. Inizia a parlare.",
+      "subtitle": "SwissKeyboard è una tastiera vocale per il tuo telefono. Tocca il microfono, parla naturalmente, e guarda le tue parole diventare testo – istantaneamente. Scrivi messaggi, e-mail e note 3 volte più veloce che digitando. E a differenza di Big Tech, capiamo davvero lo svizzero tedesco."
     },
     "badges": {
       "helperText": "Prova gratis ora",
@@ -357,41 +403,64 @@
     "form": {
       "emailInvalid": "Inserisci un indirizzo email valido"
     },
+    "whyVoice": {
+      "sectionTitle": "Perché la dettatura vocale?",
+      "speed": {
+        "title": "Scrivi 3 volte più veloce",
+        "description": "Parlare è più veloce che digitare. Un messaggio che richiede 30 secondi da digitare si dice in 10 secondi."
+      },
+      "anywhere": {
+        "title": "Scrivi ovunque",
+        "description": "Camminando, sui mezzi, cucinando. La dettatura vocale funziona quando le tue mani non possono."
+      },
+      "natural": {
+        "title": "Scrivi più naturalmente",
+        "description": "Quando parli, i tuoi pensieri fluiscono. Niente più fissare la tastiera o cercare le lettere."
+      },
+      "accessible": {
+        "title": "Accessibile a tutti",
+        "description": "Per persone con mobilità ridotta, dislessia o disabilità visive – parlare è più semplice."
+      }
+    },
+    "problem": {
+      "sectionTitle": "Il problema con la dettatura vocale attuale",
+      "description": "Il tuo telefono ha già la dettatura vocale. Perché nessuno la usa? Perché non funziona – non se parli svizzero tedesco. Tocchi il microfono, dici qualcosa in Züritüütsch, e Apple lo \"corregge\" in tedesco standard. O in parole senza senso. Il tuo dialetto diventa un errore."
+    },
     "infoGrid": {
       "voiceToText": {
-        "title": "Sovranità linguistica",
-        "description": "La tua lingua merita rispetto – non correzione da algoritmi stranieri."
+        "title": "Finalmente capito",
+        "description": "Dettatura vocale che capisce Züritüütsch, Bärndütsch, Baseldütsch e ogni dialetto nel mezzo."
       },
       "aiRecognition": {
         "title": "IA Swiss-Made",
-        "description": "Addestrata con veri dialetti di veri svizzeri – non con il tedesco standard di Berlino."
+        "description": "Addestrata con vere voci svizzere – non con il tedesco standard di Berlino."
       },
       "speed": {
-        "title": "Senza compromessi",
-        "description": "Veloce, preciso e indipendente. Non devi scegliere tra efficienza e valori."
+        "title": "Veloce & preciso",
+        "description": "Parla al tuo ritmo normale. Le tue parole appaiono come testo – accurate e istantanee."
       }
     },
     "features": {
-      "sectionTitle": "Cosa difendiamo",
+      "sectionTitle": "Cosa ci rende diversi",
       "naturalSpeech": {
-        "title": "La tua lingua, non la loro",
-        "description": "Big Tech dice che il tuo dialetto è un errore. Noi diciamo: è cultura. Parla come sei."
+        "title": "Precisione iperlocale",
+        "description": "Non riconosciamo solo \"lo svizzero tedesco\". Capiamo le differenze tra Berna, Zurigo, Basilea e oltre."
       },
       "everyRegion": {
-        "title": "Da svizzeri, per svizzeri",
-        "description": "Sviluppato in Svizzera. Addestrato con voci svizzere. Costruito per gli interessi svizzeri."
+        "title": "Funziona ovunque",
+        "description": "Messaggi, WhatsApp, e-mail, note, social media – ogni campo testo sul tuo telefono. Una tastiera per tutto."
       },
       "saveTime": {
-        "title": "Riprendi la tua libertà",
-        "description": "Perché adattarti a sistemi stranieri? Detta nel tuo dialetto – la tecnologia si adatta a te."
+        "title": "Impara costantemente",
+        "description": "La nostra IA migliora con ogni aggiornamento, addestrata su come gli svizzeri parlano davvero."
       },
       "worksEverywhere": {
-        "title": "Indipendenza ovunque",
-        "description": "In ogni app, su ogni dispositivo. Senza compromessi sulla tua identità o i tuoi dati."
+        "title": "Privacy prima",
+        "description": "Costruito in Svizzera con valori svizzeri di protezione dati. Nessun server straniero. Nessuna raccolta nascosta."
       },
       "focusedExperience": {
-        "title": "Concentrazione totale",
-        "description": "Nessuna distrazione. Nessuna interruzione. Solo tu e le tue parole."
+        "title": "Indipendente",
+        "description": "Nessuna proprietà Big Tech. Nessun investitore Silicon Valley. Costruiamo per gli utenti, non per gli inserzionisti."
       },
       "communityDriven": {
         "title": "Sviluppato con la comunità",
@@ -401,51 +470,51 @@
     "howItWorks": {
       "sectionTitle": "Come funziona",
       "step1": {
-        "title": "Installa l'app",
-        "description": "Scarica l'app e configura la tastiera – ci vogliono solo pochi minuti."
+        "title": "Aggiungi la tastiera",
+        "description": "Scarica l'app, attivala nelle impostazioni. Meno di due minuti – nessun account richiesto."
       },
       "step2": {
-        "title": "Parla come sempre",
-        "description": "Premi il microfono e parla nel tuo dialetto. L'IA impara costantemente."
+        "title": "Tocca il microfono",
+        "description": "Apri qualsiasi app – Messaggi, WhatsApp, e-mail. Tocca il microfono su SwissKeyboard."
       },
       "step3": {
-        "title": "Il testo appare",
-        "description": "Le tue parole vengono trascritte. Con ogni aggiornamento, il riconoscimento migliora."
+        "title": "Parla naturalmente",
+        "description": "Parla nel tuo dialetto, al tuo ritmo. Le tue parole appaiono come testo – accurate, istantanee. Fatto."
       }
     },
     "useCases": {
       "sectionTitle": "Per chi?",
       "dailyCommunication": {
-        "title": "Autodeterminazione digitale",
-        "description": "Scrivi come parli. Senza correzione straniera. Senza che un algoritmo decida cosa è 'corretto'."
+        "title": "Chi vuole scrivere più veloce",
+        "description": "Se mandi molti messaggi, e-mail o note, la dettatura vocale ti fa risparmiare tempo – ogni giorno."
       },
       "productivity": {
-        "title": "Efficiente & sovrano",
-        "description": "Scrivi più veloce senza regalare i tuoi dati. Produttività senza prezzo."
+        "title": "Persone in movimento",
+        "description": "Pendolari, tra riunioni, commissioni. Parla i tuoi messaggi invece di fermarti a digitare."
       },
       "professional": {
-        "title": "Per chi non compromette",
-        "description": "Giornalisti, ricercatori, creatori culturali – tutti quelli che valorizzano l'indipendenza."
+        "title": "Genitori & caregiver",
+        "description": "Bambino in braccio, cena da preparare, caos da gestire. La dettatura vocale funziona quando le mani sono occupate."
       },
       "cultural": {
-        "title": "Proteggere la lingua è proteggere la cultura",
-        "description": "Ogni dialetto che preservi digitalmente è un pezzo di Svizzera che non andrà perso."
+        "title": "Accessibilità",
+        "description": "Per chi trova difficile digitare – mobilità ridotta, dislessia, problemi visivi. Parlare è più facile."
       },
       "accessibility": {
-        "title": "Accessibilità",
-        "description": "Per persone con mobilità ridotta, dislessia o disabilità visive. Parlare invece di digitare."
+        "title": "Stufi delle \"correzioni\"",
+        "description": "Se il tuo telefono ha mai trasformato il tuo dialetto in tedesco standard o nonsense – questo è per te."
       },
       "elderly": {
         "title": "Per tutte le età",
-        "description": "Uso intuitivo per tutte le generazioni. Nessuna tecnologia complicata – parla semplicemente."
+        "description": "Abbastanza semplice per tutti. Nessuna tecnologia complicata – parla semplicemente."
       },
       "expats": {
         "title": "Svizzeri all'estero",
-        "description": "Resta connesso alla tua patria. Scrivi nel tuo dialetto, ovunque tu sia."
+        "description": "Vivi all'estero? Resta connesso. Scrivi nel tuo dialetto, ovunque tu sia."
       },
       "families": {
-        "title": "Per le famiglie",
-        "description": "Mani occupate? Parla semplicemente. Perfetto per genitori che devono fare multitasking."
+        "title": "Protezione culturale",
+        "description": "Ogni dialetto che preservi digitalmente è un pezzo di Svizzera che non andrà perso."
       }
     },
     "values": {
@@ -471,11 +540,11 @@
       }
     },
     "earlyAdopter": {
-      "text": "Siamo un progetto giovane. Sii tra i primi a vivere la sovranità linguistica digitale."
+      "text": "Stiamo costruendo la tastiera vocale che Big Tech non costruisce. Sii tra i primi a provarla."
     },
     "cta": {
       "title": "Unisciti dall'inizio",
-      "description": "Un progetto svizzero ha bisogno di supporto svizzero. Nessun capitale di rischio straniero. Nessun interesse straniero. Solo una missione: proteggere la tua lingua.",
+      "description": "Un progetto svizzero ha bisogno di supporto svizzero. Nessun capitale di rischio straniero. Nessun interesse straniero. Solo una missione: tecnologia che capisce la tua voce.",
       "emailPlaceholder": "Il tuo indirizzo e-mail",
       "subscribe": "Unisciti",
       "emailSubject": "Iscrizione al programma beta",
@@ -496,7 +565,7 @@
   },
   "rm": {
     "meta": {
-      "title": "Swiss Voice Keyboard - Tastatura suverana per dialects svizzers",
+      "title": "SwissKeyboard - Tastatura vocala per dialects svizzers",
       "lang": "rm"
     },
     "nav": {
@@ -504,8 +573,8 @@
       "download": "Telechargiar"
     },
     "hero": {
-      "title": "Tia vusch. Tia suveranitad.",
-      "subtitle": "Big Tech tracta tes dialect sco ina errur. Nus avain construì in'alternativa – sviluppada en Svizra, per la Svizra. Nagina correcziun da Silicon Valley. Nagins servers ester. Mo ti e tia lingua."
+      "title": "Smetta da tippar. Cumenza a discurrer.",
+      "subtitle": "SwissKeyboard è ina tastatura vocala per tes telefon. Tucca il microfon, discurra natiralmain, e guarda co tes pleds dattan text – immediat. Scriva messadis, e-mails e notizias 3x pli svelt che cun tippar. E different da Big Tech chapain nus era il tudestg svizzer."
     },
     "badges": {
       "helperText": "Empruvar ussa gratuit",
@@ -522,41 +591,64 @@
     "form": {
       "emailInvalid": "Per plaschair inditgescha ina adressa e-mail valida"
     },
+    "whyVoice": {
+      "sectionTitle": "Pertge endataziun vocala?",
+      "speed": {
+        "title": "Scriver 3x pli svelt",
+        "description": "Discurrer è pli svelt che tippar. In messadi che dovra 30 secundas per tippar sa dir en 10 secundas."
+      },
+      "anywhere": {
+        "title": "Scriver dapertut",
+        "description": "Caminond, pendelond, cuschinond. L'endataziun vocala funcziuna cura che tes mauns na pon betg."
+      },
+      "natural": {
+        "title": "Scriver pli natiralmain",
+        "description": "Cura che ti discurras, flueschan tes pensaments. Nagin pli fixar la tastatura u tschertgar bustabs."
+      },
+      "accessible": {
+        "title": "Accessibel per tuts",
+        "description": "Per persunas cun mobilitad reducida, dislexia u impediments visuals – discurrer è pli simpel."
+      }
+    },
+    "problem": {
+      "sectionTitle": "Il problem cun l'endataziun vocala actuala",
+      "description": "Tes telefon ha gia endataziun vocala. Pertge l'utilisescha nagin? Perquai ch'ella na funcziuna betg – betg sche ti discurras tudestg svizzer. Ti tuccas il microfon, dis insatge en Züritüütsch, e Apple al \"corregiescha\" a tudestg standard. U a tschuffs. Tes dialect daventa ina errur."
+    },
     "infoGrid": {
       "voiceToText": {
-        "title": "Suveranitad linguistica",
-        "description": "Tia lingua merita respect – betg correcziun tras algoritmus esters."
+        "title": "Finalmain chapì",
+        "description": "Endataziun vocala che chapesch Züritüütsch, Bärndütsch, Baseldütsch e mintga dialect en il mez."
       },
       "aiRecognition": {
         "title": "IA Swiss-Made",
-        "description": "Trenada cun dialects reals da Svizzers reals – betg cun tudestg standard da Berlin."
+        "description": "Trenada cun vuschs svizras realas – betg cun tudestg standard da Berlin."
       },
       "speed": {
-        "title": "Nagins cumpromiss",
-        "description": "Svelt, precis e independent. Ti na stos betg tscherner tranter efficienza e valurs."
+        "title": "Svelt & precis",
+        "description": "Discurra en tes temp normal. Tes pleds cumparan sco text – exact e immediat."
       }
     },
     "features": {
-      "sectionTitle": "Per tge che nus stain",
+      "sectionTitle": "Tge che nus distingua",
       "naturalSpeech": {
-        "title": "Tia lingua, betg lur",
-        "description": "Big Tech di che tes dialect saja ina errur. Nus din: Quai è cultura. Discurra sco che ti es."
+        "title": "Precisiun hyperlocala",
+        "description": "Nus na reconuschain betg mo \"il tudestg svizzer\". Nus chapain las differentschas tranter Berna, Turitg, Basilea e vinavant."
       },
       "everyRegion": {
-        "title": "Da Svizzers, per Svizzers",
-        "description": "Sviluppà en Svizra. Trenà cun vuschs svizras. Construì per interess svizzers."
+        "title": "Funcziuna dapertut",
+        "description": "Messadis, WhatsApp, e-mail, notizias, social media – mintga champ da text sin tes telefon. Ina tastatura per tut."
       },
       "saveTime": {
-        "title": "Reprender tia libertad",
-        "description": "Pertge ta adattar a sistems esters? Dictar en tes dialect – la tecnologia s'adattescha a ti."
+        "title": "Emprenda constantamain",
+        "description": "Nossa IA sa meglierescha cun mintga update, trenada sin co che Svizzers discurran propi."
       },
       "worksEverywhere": {
-        "title": "Independenza dapertut",
-        "description": "En mintga app, sin mintga apparat. Senza cumpromiss sin tia identitad u tias datas."
+        "title": "Sfera privata emprim",
+        "description": "Construì en Svizra cun valurs svizras da protecziun da datas. Nagins servers esters. Nagina ramasada zuppada."
       },
       "focusedExperience": {
-        "title": "Concentraziun totala",
-        "description": "Nagina distracziun. Nagina interrupziun. Mo ti e tes pleds."
+        "title": "Independent",
+        "description": "Nagina proprietad Big Tech. Nagins investiders da Silicon Valley. Nus construin per utilisaders, betg per reclama."
       },
       "communityDriven": {
         "title": "Sviluppà cun la communitad",
@@ -566,51 +658,51 @@
     "howItWorks": {
       "sectionTitle": "Co che quai funcziuna",
       "step1": {
-        "title": "Installar l'app",
-        "description": "Telechargia l'app e configurescha la tastatura – quai dura mo paucs minuts."
+        "title": "Agiuntar la tastatura",
+        "description": "Telechargia l'app, activescha ella en ils parameters. Main che duas minutas – nagin conto necessari."
       },
       "step2": {
-        "title": "Discurra sco adina",
-        "description": "Smatga il microfon e discurra en tes dialect. L'IA emprenda constantamain."
+        "title": "Tuccar il microfon",
+        "description": "Avra in'app tgenquala – Messadis, WhatsApp, e-mail. Tucca il microfon da SwissKeyboard."
       },
       "step3": {
-        "title": "Il text cumpara",
-        "description": "Tes pleds vegnan transcrits. Cun mintga update vegn la reconuschientscha meglra."
+        "title": "Discurrer natiralmain",
+        "description": "Discurra en tes dialect, en tes temp. Tes pleds cumparan sco text – exact, immediat. Finì."
       }
     },
     "useCases": {
       "sectionTitle": "Per tgi?",
       "dailyCommunication": {
-        "title": "Autodeterminaziun digitala",
-        "description": "Scriva sco che ti discurras. Senza correcziun estra. Senza ch'in algoritmus decida tge ch'è 'correct'."
+        "title": "Quels che vulan scriver pli svelt",
+        "description": "Sche ti tramettast blers messadis, e-mails u notizias, spargna l'endataziun vocala temp real – mintga di."
       },
       "productivity": {
-        "title": "Efficient & suveran",
-        "description": "Textar pli svelt senza dar vias tias datas. Productivitad senza pretsch."
+        "title": "Glieud en moviment",
+        "description": "Pendelond, tranter sedias, facend commissiuns. Discurra tes messadis empè da star sut per tippar."
       },
       "professional": {
-        "title": "Per quels che na cumprometteschan betg",
-        "description": "Schurnalists, perscrutaders, creaders culturals – tuts quels che valiteschan l'independenza."
+        "title": "Geniturs & curaders",
+        "description": "Uffant en bratsch, tschaina da preparar, caos da managiar. L'endataziun vocala funcziuna cura che ils mauns èn occupads."
       },
       "cultural": {
-        "title": "Proteger la lingua è proteger la cultura",
-        "description": "Mintga dialect che ti conservas digitalmain è in toc Svizra che na va betg pers."
+        "title": "Accessibilitad",
+        "description": "Per tuts quels che chattan tippar grev – mobilitad reducida, dislexia, problems visuals. Discurrer è pli simpel."
       },
       "accessibility": {
-        "title": "Accessibilitad",
-        "description": "Per persunas cun mobilitad reducida, dislexia u impediments visuals. Discurrer empè da tippar."
+        "title": "Stuf da \"correcziuns\"",
+        "description": "Sche tes telefon ha mai transfurmà tes dialect en tudestg standard u tschuffs – quai è per ti."
       },
       "elderly": {
         "title": "Per tuttas vegliadiras",
-        "description": "Utilisaziun intuitiva per tuttas generaziuns. Nagina tecnica cumplitgada – discurra simplamain."
+        "description": "Avunda simpel per tuts. Nagina tecnologia cumplitgada – discurra simplamain."
       },
       "expats": {
         "title": "Svizzers a l'ester",
-        "description": "Resta connectà cun tia patria. Scriva en tes dialect, nua che ti es."
+        "description": "Vivas a l'ester? Resta connectà. Scriva en tes dialect, nua che ti es."
       },
       "families": {
-        "title": "Per famiglias",
-        "description": "Mauns occupads? Discurra simplamain. Perfect per geniturs che ston far multitasking."
+        "title": "Protecziun culturala",
+        "description": "Mintga dialect che ti conservas digitalmain è in toc Svizra che na va betg pers."
       }
     },
     "values": {
@@ -636,11 +728,11 @@
       }
     },
     "earlyAdopter": {
-      "text": "Nus essan in project giuven. Sias in dals emprims che viva la suveranitad linguistica digitala."
+      "text": "Nus construin la tastatura vocala che Big Tech na construescha betg. Sias in dals emprims che l'emprovan."
     },
     "cta": {
       "title": "Sias là dal cumenzament",
-      "description": "In project svizzer basegna sustegn svizzer. Nagin venture capital da l'ester. Nagins interess esters. Mo ina missiun: proteger tia lingua.",
+      "description": "In project svizzer basegna sustegn svizzer. Nagin venture capital da l'ester. Nagins interess esters. Mo ina missiun: tecnologia che chapesch tia vusch.",
       "emailPlaceholder": "Tia adressa e-mail",
       "subscribe": "Far part",
       "emailSubject": "Annunzia al program beta",
@@ -661,7 +753,7 @@
   },
   "en": {
     "meta": {
-      "title": "Swiss Voice Keyboard - Sovereign Keyboard for Swiss Dialects",
+      "title": "SwissKeyboard - Voice Keyboard for Swiss Dialects",
       "lang": "en"
     },
     "nav": {
@@ -669,8 +761,8 @@
       "download": "Download"
     },
     "hero": {
-      "title": "Your Voice. Your Sovereignty.",
-      "subtitle": "Big Tech treats your dialect as an error. We built an alternative – developed in Switzerland, for Switzerland. No Silicon Valley correction. No foreign servers. Just you and your language."
+      "title": "Stop Typing. Start Talking.",
+      "subtitle": "SwissKeyboard is a voice-to-text keyboard for your phone. Tap the microphone, speak naturally, and watch your words become text – instantly. Write messages, emails, and notes 3x faster than typing. And unlike Big Tech, we actually understand Swiss German."
     },
     "badges": {
       "helperText": "Try it for free",
@@ -687,41 +779,64 @@
     "form": {
       "emailInvalid": "Please enter a valid email address"
     },
+    "whyVoice": {
+      "sectionTitle": "Why Voice Typing?",
+      "speed": {
+        "title": "Write 3x faster",
+        "description": "Speaking is faster than typing. A message that takes 30 seconds to tap out takes 10 seconds to say."
+      },
+      "anywhere": {
+        "title": "Write anywhere",
+        "description": "Walking, commuting, cooking. Voice typing works when your hands can't."
+      },
+      "natural": {
+        "title": "Write more naturally",
+        "description": "When you speak, your thoughts flow. No more staring at the keyboard or hunting for letters."
+      },
+      "accessible": {
+        "title": "Accessible to all",
+        "description": "For people with limited mobility, dyslexia, or visual impairments – speaking is easier."
+      }
+    },
+    "problem": {
+      "sectionTitle": "The Problem with Current Voice Typing",
+      "description": "Your phone already has voice typing built in. So why isn't everyone using it? Because it doesn't work – not if you speak Swiss German. You tap the microphone, say something in Züritüütsch, and Apple \"corrects\" it into High German. Or gibberish. Your dialect becomes an error."
+    },
     "infoGrid": {
       "voiceToText": {
-        "title": "Language Sovereignty",
-        "description": "Your language deserves respect – not correction by foreign algorithms."
+        "title": "Finally Understood",
+        "description": "Voice typing that understands Züritüütsch, Bärndütsch, Baseldütsch, and every dialect in between."
       },
       "aiRecognition": {
         "title": "Swiss-Made AI",
-        "description": "Trained with real dialects from real Swiss people – not with standard German from Berlin."
+        "description": "Trained with real Swiss voices – not with standard German from Berlin."
       },
       "speed": {
-        "title": "No Compromises",
-        "description": "Fast, precise, and independent. You don't have to choose between efficiency and values."
+        "title": "Fast & Accurate",
+        "description": "Speak at your normal pace. Your words appear as text – accurate and instant."
       }
     },
     "features": {
-      "sectionTitle": "What We Stand For",
+      "sectionTitle": "What Makes Us Different",
       "naturalSpeech": {
-        "title": "Your language, not theirs",
-        "description": "Big Tech says your dialect is an error. We say: it's culture. Speak as you are."
+        "title": "Hyper-local accuracy",
+        "description": "We don't just recognize \"Swiss German.\" We understand the differences between Bern, Zurich, Basel, and beyond."
       },
       "everyRegion": {
-        "title": "By Swiss, for Swiss",
-        "description": "Developed in Switzerland. Trained with Swiss voices. Built for Swiss interests."
+        "title": "Works everywhere",
+        "description": "Messages, WhatsApp, Email, Notes, social media – every text field on your phone. One keyboard for everything."
       },
       "saveTime": {
-        "title": "Reclaim your freedom",
-        "description": "Why adapt to foreign systems? Dictate in your dialect – the technology adapts to you."
+        "title": "Continuously learning",
+        "description": "Our AI improves with every update, trained on how Swiss people actually speak."
       },
       "worksEverywhere": {
-        "title": "Independence everywhere",
-        "description": "In every app, on every device. Without compromising your identity or your data."
+        "title": "Privacy-first",
+        "description": "Built in Switzerland with Swiss data protection values. No foreign servers. No hidden data collection."
       },
       "focusedExperience": {
-        "title": "Total focus",
-        "description": "No distractions. No interruptions. Just you and your words."
+        "title": "Independent",
+        "description": "No Big Tech ownership. No Silicon Valley investors. We build for users, not advertisers."
       },
       "communityDriven": {
         "title": "Built with the community",
@@ -729,53 +844,53 @@
       }
     },
     "howItWorks": {
-      "sectionTitle": "How it works",
+      "sectionTitle": "How It Works",
       "step1": {
-        "title": "Install the app",
-        "description": "Download the app and set up the keyboard – takes just a few minutes."
+        "title": "Add the keyboard",
+        "description": "Download the app, enable it in settings. Under two minutes – no account required."
       },
       "step2": {
-        "title": "Speak as usual",
-        "description": "Press the microphone and speak in your dialect. The AI is constantly learning."
+        "title": "Tap the mic",
+        "description": "Open any app – Messages, WhatsApp, Email. Tap the microphone on SwissKeyboard."
       },
       "step3": {
-        "title": "Text appears",
-        "description": "Your words are transcribed. With every update, recognition improves."
+        "title": "Speak naturally",
+        "description": "Talk in your dialect, at your pace. Your words appear as text – accurate, instant. Done."
       }
     },
     "useCases": {
-      "sectionTitle": "Who is this for?",
+      "sectionTitle": "Who Is This For?",
       "dailyCommunication": {
-        "title": "Digital self-determination",
-        "description": "Write as you speak. No foreign correction. No algorithm deciding what's 'correct'."
+        "title": "People who want to write faster",
+        "description": "If you send a lot of messages, emails, or notes, voice typing saves you real time – every single day."
       },
       "productivity": {
-        "title": "Efficient & sovereign",
-        "description": "Text faster without giving away your data. Productivity without a price."
+        "title": "People on the move",
+        "description": "Commuting, walking between meetings, running errands. Speak your messages instead of stopping to type."
       },
       "professional": {
-        "title": "For those who don't compromise",
-        "description": "Journalists, researchers, cultural creators – all who value independence."
+        "title": "Parents & caregivers",
+        "description": "Holding a baby, cooking dinner, managing chaos. Voice typing works when your hands are full."
       },
       "cultural": {
-        "title": "Protecting language is protecting culture",
-        "description": "Every dialect you preserve digitally is a piece of Switzerland that won't be lost."
+        "title": "Accessibility",
+        "description": "For anyone who finds typing difficult – limited mobility, dyslexia, visual impairments. Speaking is easier."
       },
       "accessibility": {
-        "title": "Accessibility",
-        "description": "For people with limited mobility, dyslexia, or visual impairments. Speak instead of type."
+        "title": "Anyone tired of \"corrections\"",
+        "description": "If you've ever watched your phone turn your dialect into High German or gibberish – this is for you."
       },
       "elderly": {
-        "title": "For all ages",
-        "description": "Intuitive use for all generations. No complicated technology – just speak."
+        "title": "Every generation",
+        "description": "Simple enough for anyone. No complicated technology – just speak."
       },
       "expats": {
         "title": "Swiss abroad",
-        "description": "Stay connected to your homeland. Write in your dialect, wherever you are."
+        "description": "Living overseas? Stay connected to home. Write in your dialect, wherever you are."
       },
       "families": {
-        "title": "For families",
-        "description": "Hands full? Just speak. Perfect for parents who need to multitask."
+        "title": "Cultural protection",
+        "description": "Every dialect you preserve digitally is a piece of Switzerland that won't be lost."
       }
     },
     "values": {
@@ -801,11 +916,11 @@
       }
     },
     "earlyAdopter": {
-      "text": "We're a young project. Be among the first to live digital language sovereignty."
+      "text": "We're building the voice keyboard Big Tech won't. Be among the first to try it."
     },
     "cta": {
       "title": "Join from the start",
-      "description": "A Swiss project needs Swiss support. No foreign venture capital. No foreign interests. Just one mission: protect your language.",
+      "description": "A Swiss project needs Swiss support. No foreign venture capital. No foreign interests. Just one mission: technology that understands your voice.",
       "emailPlaceholder": "Your email address",
       "subscribe": "Join",
       "emailSubject": "Beta program signup",
