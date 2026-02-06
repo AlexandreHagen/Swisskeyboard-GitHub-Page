@@ -1,16 +1,17 @@
 <!-- Beta Join Section (replaces store badges while apps are unavailable) -->
-<div class="app-badges-section beta-join-section">
+<section class="app-badges-section beta-join-section" aria-labelledby="beta-heading">
     <p class="badges-helper-text" data-i18n="badges.betaHelper">Join the beta program</p>
     <div class="beta-join-content">
         <div class="beta-join-text">
-            <h3 data-i18n="badges.betaTitle">Get early access</h3>
+            <h3 id="beta-heading" data-i18n="badges.betaTitle">Get early access</h3>
             <p data-i18n="badges.betaDescription">Leave your email to join the beta program and help shape the product.</p>
         </div>
-        <form class="newsletter-form beta-join-form">
+        <form class="newsletter-form beta-join-form" aria-label="Beta program signup">
             <div class="form-group">
-                <input type="email" class="email-input" name="email" data-i18n-placeholder="badges.betaEmailPlaceholder" data-i18n-title="form.emailInvalid" placeholder="Your email address" title="Please enter a valid email address" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" required>
+                <label for="beta-email" class="sr-only" data-i18n="badges.betaEmailPlaceholder">Your email address</label>
+                <input type="email" id="beta-email" class="email-input" name="email" data-i18n-placeholder="badges.betaEmailPlaceholder" data-i18n-title="form.emailInvalid" placeholder="Your email address" title="Please enter a valid email address" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" required autocomplete="email">
                 <button type="submit" class="submit-button" data-i18n="badges.betaCta">Join beta</button>
             </div>
         </form>
     </div>
-</div>
+</section>

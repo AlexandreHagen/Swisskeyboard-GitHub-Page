@@ -3,7 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swiss Voice Keyboard - Souveräne Tastatur für Schweizer Dialekte</title>
+    <title>SwissKeyboard - Sprachgesteuerte Tastatur für Schweizer Dialekte</title>
+    <meta name="description" id="meta-description" content="SwissKeyboard ist die erste Spracheingabe-Tastatur, die Schweizer Dialekte versteht. Züritüütsch, Bärndütsch, Baseldütsch und mehr – Swiss-Made KI für dein Handy.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" id="canonical-url" href="https://swisskeyboard.ch/">
+
+    <!-- Hreflang alternate language links -->
+    <link rel="alternate" hreflang="de" href="https://swisskeyboard.ch/?lang=de">
+    <link rel="alternate" hreflang="fr" href="https://swisskeyboard.ch/?lang=fr">
+    <link rel="alternate" hreflang="it" href="https://swisskeyboard.ch/?lang=it">
+    <link rel="alternate" hreflang="rm" href="https://swisskeyboard.ch/?lang=rm">
+    <link rel="alternate" hreflang="en" href="https://swisskeyboard.ch/?lang=en">
+    <link rel="alternate" hreflang="x-default" href="https://swisskeyboard.ch/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" id="og-url" content="https://swisskeyboard.ch/">
+    <meta property="og:title" id="og-title" content="SwissKeyboard - Sprachgesteuerte Tastatur für Schweizer Dialekte">
+    <meta property="og:description" id="og-description" content="SwissKeyboard ist die erste Spracheingabe-Tastatur, die Schweizer Dialekte versteht. Züritüütsch, Bärndütsch, Baseldütsch und mehr – Swiss-Made KI für dein Handy.">
+    <meta property="og:locale" id="og-locale" content="de_CH">
+    <meta property="og:locale:alternate" content="fr_CH">
+    <meta property="og:locale:alternate" content="it_CH">
+    <meta property="og:locale:alternate" content="rm_CH">
+    <meta property="og:locale:alternate" content="en_GB">
+    <meta property="og:site_name" content="SwissKeyboard">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" id="twitter-title" content="SwissKeyboard - Sprachgesteuerte Tastatur für Schweizer Dialekte">
+    <meta name="twitter:description" id="twitter-description" content="SwissKeyboard ist die erste Spracheingabe-Tastatur, die Schweizer Dialekte versteht. Swiss-Made KI für dein Handy.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" id="structured-data">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "SwissKeyboard",
+        "url": "https://swisskeyboard.ch/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "iOS, Android",
+        "description": "Die erste Spracheingabe-Tastatur, die Schweizer Dialekte versteht. Swiss-Made KI für Züritüütsch, Bärndütsch, Baseldütsch und mehr.",
+        "inLanguage": ["de-CH", "fr-CH", "it-CH", "rm-CH", "en"],
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "CHF",
+            "availability": "https://schema.org/PreOrder"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "SwissKeyboard",
+            "url": "https://swisskeyboard.ch/",
+            "email": "contact@swisskeyboard.ch",
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "CH"
+            }
+        }
+    }
+    </script>
+
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -60,6 +120,9 @@
     </style>
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
     <!-- Wave Interference Background (Canvas-based, SEO-safe) -->
     <div class="ascii-wave-container" id="waveInterference1" aria-hidden="true" role="presentation" data-nosnippet>
         <canvas class="wave-canvas"></canvas>
@@ -89,7 +152,7 @@
     <div id="navigation"></div>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" id="main-content">
         <!-- Title Section Component -->
         <div id="title-section"></div>
 
@@ -290,6 +353,10 @@
 
         // Auto-initialize all wave containers on page load
         function initWaveContainers() {
+            // Respect prefers-reduced-motion
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
             document.querySelectorAll('.ascii-wave-container').forEach(container => {
                 new CanvasWaveRenderer(container);
             });
