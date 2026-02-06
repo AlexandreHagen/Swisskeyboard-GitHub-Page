@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://swisskeyboard.ch/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://swisskeyboard.ch/?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://swisskeyboard.ch/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://swisskeyboard.ch/?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="rm" href="https://swisskeyboard.ch/?lang=rm"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://swisskeyboard.ch/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://swisskeyboard.ch/"/>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

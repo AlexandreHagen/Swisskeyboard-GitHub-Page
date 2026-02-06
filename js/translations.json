@@ -2,6 +2,7 @@
   "de": {
     "meta": {
       "title": "SwissKeyboard - Sprachgesteuerte Tastatur für Schweizer Dialekte",
+      "description": "SwissKeyboard ist die erste Spracheingabe-Tastatur, die Schweizer Dialekte versteht. Züritüütsch, Bärndütsch, Baseldütsch und mehr – Swiss-Made KI für dein Handy.",
       "lang": "de"
     },
     "nav": {
@@ -190,6 +191,7 @@
   "fr": {
     "meta": {
       "title": "SwissKeyboard - Clavier vocal pour dialectes suisses",
+      "description": "SwissKeyboard est le premier clavier vocal qui comprend les dialectes suisses. Züritüütsch, Bärndütsch, Baseldütsch et plus – IA Swiss-Made pour ton téléphone.",
       "lang": "fr"
     },
     "nav": {
@@ -378,6 +380,7 @@
   "it": {
     "meta": {
       "title": "SwissKeyboard - Tastiera vocale per dialetti svizzeri",
+      "description": "SwissKeyboard è la prima tastiera vocale che capisce i dialetti svizzeri. Züritüütsch, Bärndütsch, Baseldütsch e altro – IA Swiss-Made per il tuo telefono.",
       "lang": "it"
     },
     "nav": {
@@ -566,6 +569,7 @@
   "rm": {
     "meta": {
       "title": "SwissKeyboard - Tastatura vocala per dialects svizzers",
+      "description": "SwissKeyboard è l'emprima tastatura vocala che chapesch ils dialects svizzers. Züritüütsch, Bärndütsch, Baseldütsch ed auter – IA Swiss-Made per tes telefon.",
       "lang": "rm"
     },
     "nav": {
@@ -754,6 +758,7 @@
   "en": {
     "meta": {
       "title": "SwissKeyboard - Voice Keyboard for Swiss Dialects",
+      "description": "SwissKeyboard is the first voice keyboard that understands Swiss dialects. Züritüütsch, Bärndütsch, Baseldütsch and more – Swiss-Made AI for your phone.",
       "lang": "en"
     },
     "nav": {

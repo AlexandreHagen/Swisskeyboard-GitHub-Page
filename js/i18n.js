@@ -157,6 +157,9 @@
             document.title = translations[lang].meta.title;
         }
 
+        // Update meta tags for SEO
+        updateMetaTags(lang);
+
         // Dispatch custom event
         window.dispatchEvent(new CustomEvent('i18n:languageChanged', { detail: { language: lang } }));
     }
@@ -226,6 +229,64 @@
         if (translations[currentLanguage]?.meta?.title) {
             document.title = translations[currentLanguage].meta.title;
         }
+
+        // Update meta tags for SEO
+        updateMetaTags(currentLanguage);
+    }
+
+    /**
+     * Update meta tags (description, OG, Twitter, canonical) for current language
+     */
+    function updateMetaTags(lang) {
+        const meta = translations[lang]?.meta;
+        if (!meta) return;
+
+        const title = meta.title || '';
+        const description = meta.description || '';
+
+        const localeMap = {
+            'de': 'de_CH',
+            'fr': 'fr_CH',
+            'it': 'it_CH',
+            'rm': 'rm_CH',
+            'en': 'en_GB'
+        };
+
+        // Meta description
+        const metaDesc = document.getElementById('meta-description');
+        if (metaDesc) metaDesc.setAttribute('content', description);
+
+        // Canonical URL
+        const canonical = document.getElementById('canonical-url');
+        if (canonical) {
+            canonical.setAttribute('href', lang === DEFAULT_LANGUAGE
+                ? 'https://swisskeyboard.ch/'
+                : `https://swisskeyboard.ch/?lang=${lang}`);
+        }
+
+        // Open Graph
+        const ogTitle = document.getElementById('og-title');
+        if (ogTitle) ogTitle.setAttribute('content', title);
+
+        const ogDesc = document.getElementById('og-description');
+        if (ogDesc) ogDesc.setAttribute('content', description);
+
+        const ogUrl = document.getElementById('og-url');
+        if (ogUrl) {
+            ogUrl.setAttribute('content', lang === DEFAULT_LANGUAGE
+                ? 'https://swisskeyboard.ch/'
+                : `https://swisskeyboard.ch/?lang=${lang}`);
+        }
+
+        const ogLocale = document.getElementById('og-locale');
+        if (ogLocale) ogLocale.setAttribute('content', localeMap[lang] || 'de_CH');
+
+        // Twitter Card
+        const twitterTitle = document.getElementById('twitter-title');
+        if (twitterTitle) twitterTitle.setAttribute('content', title);
+
+        const twitterDesc = document.getElementById('twitter-description');
+        if (twitterDesc) twitterDesc.setAttribute('content', description);
     }
 
     /**
@@ -254,15 +315,15 @@
 
         // Create dropdown content (no emojis, full language names)
         let dropdownHTML = `
-            <div class="lang-current" id="lang-current">
+            <button class="lang-current" id="lang-current" aria-expanded="false" aria-haspopup="listbox" aria-label="Language: ${languageFullNames[currentLanguage]}">
                 <span class="lang-code">${languageFullNames[currentLanguage]}</span>
-                <svg class="lang-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                <svg class="lang-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
                     <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-            </div>
-            <div class="lang-dropdown" id="lang-dropdown">
+            </button>
+            <div class="lang-dropdown" id="lang-dropdown" role="listbox" aria-label="Select language">
                 ${SUPPORTED_LANGUAGES.map(lang => `
-                    <button class="lang-option ${lang === currentLanguage ? 'active' : ''}" data-lang="${lang}">
+                    <button class="lang-option ${lang === currentLanguage ? 'active' : ''}" data-lang="${lang}" role="option" aria-selected="${lang === currentLanguage}">
                         <span class="lang-name">${languageFullNames[lang]}</span>
                     </button>
                 `).join('')}
@@ -278,6 +339,8 @@
         current.addEventListener('click', (e) => {
             e.stopPropagation();
             switcher.classList.toggle('open');
+            const isOpen = switcher.classList.contains('open');
+            current.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
 
         // Handle language selection
@@ -293,6 +356,7 @@
         // Close dropdown when clicking outside
         document.addEventListener('click', () => {
             switcher.classList.remove('open');
+            current.setAttribute('aria-expanded', 'false');
         });
     }
 
@@ -318,7 +382,9 @@
         if (dropdown) {
             dropdown.querySelectorAll('.lang-option').forEach(option => {
                 const lang = option.getAttribute('data-lang');
-                option.classList.toggle('active', lang === currentLanguage);
+                const isActive = lang === currentLanguage;
+                option.classList.toggle('active', isActive);
+                option.setAttribute('aria-selected', isActive ? 'true' : 'false');
             });
         }
     }
