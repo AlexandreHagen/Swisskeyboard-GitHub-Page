@@ -252,7 +252,7 @@ function sleep(ms) {
 function startAutoPlay() {
     stopAutoPlay();
     autoPlayInterval = setInterval(() => {
-        if (!isAnimating) {
+        if (!isAnimating && !document.hidden) {
             const codes = Object.keys(CANTONS);
             const randomCode = codes[Math.floor(Math.random() * codes.length)];
             selectCanton(randomCode);
