@@ -185,6 +185,74 @@
       "research": {
         "title": "Forschung",
         "description": "Akademische Kooperationen willkommen"
+      },
+      "privacy": {
+        "title": "Datenschutz",
+        "description": "Deine Daten, deine Rechte"
+      }
+    },
+    "privacy": {
+      "pageTitle": "Datenschutzerklärung",
+      "lastUpdated": "Letzte Aktualisierung: 7. Februar 2026",
+      "intro": {
+        "title": "Einleitung",
+        "text": "SwissKeyboard («wir», «uns») nimmt den Schutz deiner Daten ernst. Diese Datenschutzerklärung beschreibt, wie wir personenbezogene Daten in unserer mobilen Tastatur-App und auf unserer Website verarbeiten. Wir halten uns an das Schweizer Bundesgesetz über den Datenschutz (nDSG) sowie die DSGVO, wo anwendbar."
+      },
+      "controller": {
+        "title": "Verantwortliche Stelle",
+        "text": "Verantwortlich für die Datenverarbeitung ist:",
+        "entity": "SwissKeyboard",
+        "address": "Schweiz",
+        "email": "datenschutz@swisskeyboard.ch"
+      },
+      "dataCollected": {
+        "title": "Erhobene Daten",
+        "voiceData": {
+          "title": "Sprachdaten",
+          "text": "Wenn du die Spracherkennung nutzt, wird dein Audio verarbeitet, um es in Text umzuwandeln. Die Audiodaten werden nicht gespeichert und nach der Umwandlung sofort gelöscht."
+        },
+        "analytics": {
+          "title": "Nutzungsanalyse",
+          "text": "Wir erheben anonymisierte Nutzungsdaten (z.B. gewählter Dialekt, Sitzungsdauer), um die App zu verbessern. Diese Daten sind nicht personenbeziehbar."
+        },
+        "betaEmail": {
+          "title": "Beta-Programm (E-Mail)",
+          "text": "Wenn du dich für das Beta-Programm anmeldest, speichern wir deine E-Mail-Adresse, um dich über Updates zu informieren. Du kannst dich jederzeit abmelden."
+        }
+      },
+      "processing": {
+        "title": "On-Device vs. Server-Verarbeitung",
+        "text": "Unsere KI-Spracherkennung läuft so weit wie möglich direkt auf deinem Gerät. Wenn eine Server-Verarbeitung erforderlich ist, werden die Daten verschlüsselt übertragen und sofort nach Verarbeitung gelöscht. Wir nutzen ausschliesslich Server in der Schweiz."
+      },
+      "storage": {
+        "title": "Speicherung & Aufbewahrung",
+        "text": "Die App speichert Einstellungen und ein persönliches Wörterbuch lokal auf deinem Gerät. Diese Daten verlassen dein Gerät nicht. Beta-E-Mails werden maximal bis zum Abschluss des Beta-Programms gespeichert."
+      },
+      "thirdParty": {
+        "title": "Drittanbieter",
+        "text": "Wir nutzen keine Werbenetzwerke und teilen deine Daten nicht mit Dritten zu Marketingzwecken. Für die App-Bereitstellung können folgende Dienste zum Einsatz kommen:",
+        "services": "Apple App Store / Google Play Store (App-Distribution), Schweizer Hosting-Provider (Server-Infrastruktur)"
+      },
+      "rights": {
+        "title": "Deine Rechte",
+        "text": "Gemäss dem nDSG und der DSGVO hast du folgende Rechte:",
+        "list": {
+          "access": "Auskunft über deine gespeicherten Daten",
+          "rectification": "Berichtigung unrichtiger Daten",
+          "deletion": "Löschung deiner Daten",
+          "portability": "Datenübertragbarkeit",
+          "objection": "Widerspruch gegen die Verarbeitung",
+          "complaint": "Beschwerde bei der zuständigen Datenschutzbehörde (EDÖB)"
+        }
+      },
+      "contact": {
+        "title": "Kontakt Datenschutz",
+        "text": "Für Datenschutzanfragen erreichst du uns unter:",
+        "email": "datenschutz@swisskeyboard.ch"
+      },
+      "changes": {
+        "title": "Änderungen",
+        "text": "Wir können diese Datenschutzerklärung jederzeit anpassen. Die aktuelle Version ist immer auf dieser Seite verfügbar."
       }
     }
   },
@@ -374,6 +442,74 @@
       "research": {
         "title": "Recherche",
         "description": "Coopérations académiques bienvenues"
+      },
+      "privacy": {
+        "title": "Confidentialité",
+        "description": "Tes données, tes droits"
+      }
+    },
+    "privacy": {
+      "pageTitle": "Politique de confidentialité",
+      "lastUpdated": "Dernière mise à jour : 7 février 2026",
+      "intro": {
+        "title": "Introduction",
+        "text": "SwissKeyboard (« nous ») prend la protection de tes données au sérieux. Cette politique de confidentialité décrit comment nous traitons les données personnelles dans notre application clavier mobile et sur notre site web. Nous respectons la loi fédérale suisse sur la protection des données (nLPD) ainsi que le RGPD, le cas échéant."
+      },
+      "controller": {
+        "title": "Responsable du traitement",
+        "text": "Le responsable du traitement des données est :",
+        "entity": "SwissKeyboard",
+        "address": "Suisse",
+        "email": "datenschutz@swisskeyboard.ch"
+      },
+      "dataCollected": {
+        "title": "Données collectées",
+        "voiceData": {
+          "title": "Données vocales",
+          "text": "Lorsque tu utilises la reconnaissance vocale, ton audio est traité pour le convertir en texte. Les données audio ne sont pas stockées et sont immédiatement supprimées après la conversion."
+        },
+        "analytics": {
+          "title": "Analyse d'utilisation",
+          "text": "Nous collectons des données d'utilisation anonymisées (ex. : dialecte choisi, durée de session) pour améliorer l'app. Ces données ne permettent pas de t'identifier."
+        },
+        "betaEmail": {
+          "title": "Programme bêta (e-mail)",
+          "text": "Si tu t'inscris au programme bêta, nous conservons ton adresse e-mail pour t'informer des mises à jour. Tu peux te désinscrire à tout moment."
+        }
+      },
+      "processing": {
+        "title": "Traitement on-device vs. serveur",
+        "text": "Notre reconnaissance vocale par IA fonctionne autant que possible directement sur ton appareil. Lorsqu'un traitement serveur est nécessaire, les données sont transmises de manière chiffrée et supprimées immédiatement après traitement. Nous utilisons exclusivement des serveurs en Suisse."
+      },
+      "storage": {
+        "title": "Stockage et conservation",
+        "text": "L'app stocke les paramètres et un dictionnaire personnel localement sur ton appareil. Ces données ne quittent pas ton appareil. Les e-mails bêta sont conservés au maximum jusqu'à la fin du programme bêta."
+      },
+      "thirdParty": {
+        "title": "Services tiers",
+        "text": "Nous n'utilisons pas de réseaux publicitaires et ne partageons pas tes données avec des tiers à des fins marketing. Pour la distribution de l'app, les services suivants peuvent être utilisés :",
+        "services": "Apple App Store / Google Play Store (distribution de l'app), hébergeur suisse (infrastructure serveur)"
+      },
+      "rights": {
+        "title": "Tes droits",
+        "text": "Conformément à la nLPD et au RGPD, tu disposes des droits suivants :",
+        "list": {
+          "access": "Droit d'accès à tes données",
+          "rectification": "Droit de rectification des données inexactes",
+          "deletion": "Droit à l'effacement de tes données",
+          "portability": "Droit à la portabilité des données",
+          "objection": "Droit d'opposition au traitement",
+          "complaint": "Droit de déposer une plainte auprès de l'autorité compétente (PFPDT)"
+        }
+      },
+      "contact": {
+        "title": "Contact protection des données",
+        "text": "Pour toute question relative à la protection des données, tu peux nous contacter à :",
+        "email": "datenschutz@swisskeyboard.ch"
+      },
+      "changes": {
+        "title": "Modifications",
+        "text": "Nous pouvons modifier cette politique de confidentialité à tout moment. La version actuelle est toujours disponible sur cette page."
       }
     }
   },
@@ -563,6 +699,74 @@
       "research": {
         "title": "Ricerca",
         "description": "Cooperazioni accademiche benvenute"
+      },
+      "privacy": {
+        "title": "Privacy",
+        "description": "I tuoi dati, i tuoi diritti"
+      }
+    },
+    "privacy": {
+      "pageTitle": "Informativa sulla privacy",
+      "lastUpdated": "Ultimo aggiornamento: 7 febbraio 2026",
+      "intro": {
+        "title": "Introduzione",
+        "text": "SwissKeyboard («noi») prende sul serio la protezione dei tuoi dati. Questa informativa sulla privacy descrive come trattiamo i dati personali nella nostra app tastiera mobile e sul nostro sito web. Rispettiamo la legge federale svizzera sulla protezione dei dati (nLPD) e il GDPR, ove applicabile."
+      },
+      "controller": {
+        "title": "Titolare del trattamento",
+        "text": "Il responsabile del trattamento dei dati è:",
+        "entity": "SwissKeyboard",
+        "address": "Svizzera",
+        "email": "datenschutz@swisskeyboard.ch"
+      },
+      "dataCollected": {
+        "title": "Dati raccolti",
+        "voiceData": {
+          "title": "Dati vocali",
+          "text": "Quando utilizzi il riconoscimento vocale, il tuo audio viene elaborato per convertirlo in testo. I dati audio non vengono memorizzati e vengono eliminati immediatamente dopo la conversione."
+        },
+        "analytics": {
+          "title": "Analisi dell'utilizzo",
+          "text": "Raccogliamo dati di utilizzo anonimi (es. dialetto scelto, durata della sessione) per migliorare l'app. Questi dati non sono riconducibili alla tua persona."
+        },
+        "betaEmail": {
+          "title": "Programma beta (e-mail)",
+          "text": "Se ti iscrivi al programma beta, conserviamo il tuo indirizzo e-mail per informarti sugli aggiornamenti. Puoi cancellarti in qualsiasi momento."
+        }
+      },
+      "processing": {
+        "title": "Elaborazione on-device vs. server",
+        "text": "Il nostro riconoscimento vocale IA funziona il più possibile direttamente sul tuo dispositivo. Quando è necessaria un'elaborazione server, i dati vengono trasmessi in forma crittografata e cancellati immediatamente dopo l'elaborazione. Utilizziamo esclusivamente server in Svizzera."
+      },
+      "storage": {
+        "title": "Archiviazione e conservazione",
+        "text": "L'app memorizza le impostazioni e un dizionario personale localmente sul tuo dispositivo. Questi dati non lasciano il tuo dispositivo. Le e-mail beta vengono conservate al massimo fino alla conclusione del programma beta."
+      },
+      "thirdParty": {
+        "title": "Servizi di terze parti",
+        "text": "Non utilizziamo reti pubblicitarie e non condividiamo i tuoi dati con terzi per scopi di marketing. Per la distribuzione dell'app possono essere utilizzati i seguenti servizi:",
+        "services": "Apple App Store / Google Play Store (distribuzione app), hosting provider svizzero (infrastruttura server)"
+      },
+      "rights": {
+        "title": "I tuoi diritti",
+        "text": "Ai sensi della nLPD e del GDPR, hai i seguenti diritti:",
+        "list": {
+          "access": "Diritto di accesso ai tuoi dati",
+          "rectification": "Diritto di rettifica dei dati inesatti",
+          "deletion": "Diritto alla cancellazione dei tuoi dati",
+          "portability": "Diritto alla portabilità dei dati",
+          "objection": "Diritto di opposizione al trattamento",
+          "complaint": "Diritto di presentare reclamo all'autorità competente (IFPDT)"
+        }
+      },
+      "contact": {
+        "title": "Contatto protezione dati",
+        "text": "Per domande sulla protezione dei dati puoi contattarci a:",
+        "email": "datenschutz@swisskeyboard.ch"
+      },
+      "changes": {
+        "title": "Modifiche",
+        "text": "Possiamo modificare questa informativa sulla privacy in qualsiasi momento. La versione attuale è sempre disponibile su questa pagina."
       }
     }
   },
@@ -752,6 +956,74 @@
       "research": {
         "title": "Perscrutaziun",
         "description": "Cooperaziuns academicas beneventadas"
+      },
+      "privacy": {
+        "title": "Protecziun da datas",
+        "description": "Tias datas, tes dretgs"
+      }
+    },
+    "privacy": {
+      "pageTitle": "Decleraziun da protecziun da datas",
+      "lastUpdated": "Ultima actualisaziun: 7 da favrer 2026",
+      "intro": {
+        "title": "Introducziun",
+        "text": "SwissKeyboard («nus») prenda la protecziun da tias datas a moda serieusa. Questa decleraziun da protecziun da datas descriva co nus elavurain datas persunalas en nossa app da tastatura mobila e sin nossa pagina d'internet. Nus respectain la lescha federala svizra davart la protecziun da datas (nLPD) sco er il GDPR, nua ch'el è applitgabel."
+      },
+      "controller": {
+        "title": "Post responsabel",
+        "text": "Responsabel per l'elavuraziun da datas è:",
+        "entity": "SwissKeyboard",
+        "address": "Svizra",
+        "email": "datenschutz@swisskeyboard.ch"
+      },
+      "dataCollected": {
+        "title": "Datas rimnadas",
+        "voiceData": {
+          "title": "Datas da vusch",
+          "text": "Cura che ti utiliseschas la reconuschientscha vocala, vegn tes audio elavurà per al convertir en text. Las datas audio na vegnan betg memorisadas e vegnan stizzadas immediat suenter la conversiun."
+        },
+        "analytics": {
+          "title": "Analisa da l'utilisaziun",
+          "text": "Nus rimnain datas d'utilisaziun anonimisadas (p.ex. dialect tschernì, durada da la sessiun) per meglierar l'app. Questas datas na permettan betg da t'identifitgar."
+        },
+        "betaEmail": {
+          "title": "Program beta (e-mail)",
+          "text": "Sche ti t'annunzias per il program beta, memorisain nus tia adressa d'e-mail per t'infurmar davart actualisaziuns. Ti pos ta disdir da mintga mument."
+        }
+      },
+      "processing": {
+        "title": "Elavuraziun sin l'apparat vs. server",
+        "text": "Nossa reconuschientscha vocala cun IA funcziuna uschè bler che pussaivel directamain sin tes apparat. Sche ina elavuraziun da server è necessaria, vegnan las datas transmessas en moda criptada e stizzadas immediat suenter l'elavuraziun. Nus utilisain exclusivamain servers en Svizra."
+      },
+      "storage": {
+        "title": "Memorisaziun & conservaziun",
+        "text": "L'app memorisescha parameters ed in diczigunari persunal localmain sin tes apparat. Questas datas na bandunan betg tes apparat. E-mails dal program beta vegnan conservads maximalmain fin a la fin dal program beta."
+      },
+      "thirdParty": {
+        "title": "Servetschs da terzs",
+        "text": "Nus na duvrain betg raits da reclama e na partain betg tias datas cun terzs per intent da marketing. Per la distribuziun da l'app pon vegnir utilisads ils suandants servetschs:",
+        "services": "Apple App Store / Google Play Store (distribuziun da l'app), hosting provider svizzer (infrastructura da servers)"
+      },
+      "rights": {
+        "title": "Tes dretgs",
+        "text": "Tenor la nLPD ed il GDPR has ti ils suandants dretgs:",
+        "list": {
+          "access": "Dretg d'infurmaziun davart tias datas memorisadas",
+          "rectification": "Dretg da rectificaziun da datas nuncorrectas",
+          "deletion": "Dretg da stizzar tias datas",
+          "portability": "Dretg da portabilitad da datas",
+          "objection": "Dretg d'opposiziun cunter l'elavuraziun",
+          "complaint": "Dretg da far in recurs tar l'autoritad cumpetenta (IFPDT)"
+        }
+      },
+      "contact": {
+        "title": "Contact protecziun da datas",
+        "text": "Per dumondas davart la protecziun da datas pos ti ans contactar sut:",
+        "email": "datenschutz@swisskeyboard.ch"
+      },
+      "changes": {
+        "title": "Modificaziuns",
+        "text": "Nus pudain modifitgar questa decleraziun da protecziun da datas da mintga mument. La versiun actuala è adina disponibla sin questa pagina."
       }
     }
   },
@@ -941,6 +1213,74 @@
       "research": {
         "title": "Research",
         "description": "Academic cooperations welcome"
+      },
+      "privacy": {
+        "title": "Privacy",
+        "description": "Your data, your rights"
+      }
+    },
+    "privacy": {
+      "pageTitle": "Privacy Policy",
+      "lastUpdated": "Last updated: February 7, 2026",
+      "intro": {
+        "title": "Introduction",
+        "text": "SwissKeyboard (\"we\", \"us\") takes the protection of your data seriously. This privacy policy describes how we process personal data in our mobile keyboard app and on our website. We comply with the Swiss Federal Act on Data Protection (nFADP) and the GDPR where applicable."
+      },
+      "controller": {
+        "title": "Data Controller",
+        "text": "The data controller is:",
+        "entity": "SwissKeyboard",
+        "address": "Switzerland",
+        "email": "datenschutz@swisskeyboard.ch"
+      },
+      "dataCollected": {
+        "title": "Data Collected",
+        "voiceData": {
+          "title": "Voice Data",
+          "text": "When you use voice recognition, your audio is processed to convert it to text. Audio data is not stored and is immediately deleted after conversion."
+        },
+        "analytics": {
+          "title": "Usage Analytics",
+          "text": "We collect anonymized usage data (e.g., selected dialect, session duration) to improve the app. This data cannot be traced back to you."
+        },
+        "betaEmail": {
+          "title": "Beta Program (Email)",
+          "text": "If you sign up for the beta program, we store your email address to inform you about updates. You can unsubscribe at any time."
+        }
+      },
+      "processing": {
+        "title": "On-Device vs. Server Processing",
+        "text": "Our AI voice recognition runs as much as possible directly on your device. When server processing is required, data is transmitted encrypted and deleted immediately after processing. We exclusively use servers in Switzerland."
+      },
+      "storage": {
+        "title": "Storage & Retention",
+        "text": "The app stores settings and a personal dictionary locally on your device. This data does not leave your device. Beta emails are retained at most until the beta program concludes."
+      },
+      "thirdParty": {
+        "title": "Third-Party Services",
+        "text": "We do not use advertising networks and do not share your data with third parties for marketing purposes. The following services may be used for app distribution:",
+        "services": "Apple App Store / Google Play Store (app distribution), Swiss hosting provider (server infrastructure)"
+      },
+      "rights": {
+        "title": "Your Rights",
+        "text": "Under the nFADP and GDPR, you have the following rights:",
+        "list": {
+          "access": "Right to access your stored data",
+          "rectification": "Right to rectification of inaccurate data",
+          "deletion": "Right to deletion of your data",
+          "portability": "Right to data portability",
+          "objection": "Right to object to processing",
+          "complaint": "Right to file a complaint with the competent authority (FDPIC)"
+        }
+      },
+      "contact": {
+        "title": "Data Protection Contact",
+        "text": "For data protection inquiries, you can reach us at:",
+        "email": "datenschutz@swisskeyboard.ch"
+      },
+      "changes": {
+        "title": "Changes",
+        "text": "We may update this privacy policy at any time. The current version is always available on this page."
       }
     }
   }

@@ -12,7 +12,7 @@
     
     let translations = {};
     let currentLanguage = DEFAULT_LANGUAGE;
-    const TRANSLATIONS_VERSION = '2026-01-21-1';
+    const TRANSLATIONS_VERSION = '2026-02-07-1';
 
     /**
      * Initialize the i18n system
@@ -257,12 +257,15 @@
         const metaDesc = document.getElementById('meta-description');
         if (metaDesc) metaDesc.setAttribute('content', description);
 
-        // Canonical URL
+        // Canonical URL (path-aware for subpages)
+        const basePath = window.location.pathname === '/' || window.location.pathname === '/index.html'
+            ? 'https://swisskeyboard.ch/'
+            : `https://swisskeyboard.ch${window.location.pathname}`;
         const canonical = document.getElementById('canonical-url');
         if (canonical) {
             canonical.setAttribute('href', lang === DEFAULT_LANGUAGE
-                ? 'https://swisskeyboard.ch/'
-                : `https://swisskeyboard.ch/?lang=${lang}`);
+                ? basePath
+                : `${basePath}?lang=${lang}`);
         }
 
         // Open Graph
@@ -275,8 +278,8 @@
         const ogUrl = document.getElementById('og-url');
         if (ogUrl) {
             ogUrl.setAttribute('content', lang === DEFAULT_LANGUAGE
-                ? 'https://swisskeyboard.ch/'
-                : `https://swisskeyboard.ch/?lang=${lang}`);
+                ? basePath
+                : `${basePath}?lang=${lang}`);
         }
 
         const ogLocale = document.getElementById('og-locale');
