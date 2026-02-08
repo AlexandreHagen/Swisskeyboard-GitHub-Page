@@ -213,7 +213,7 @@
         },
         "analytics": {
           "title": "Nutzungsanalyse",
-          "text": "Wir erheben anonymisierte Nutzungsdaten (z.B. gewählter Dialekt, Sitzungsdauer), um die App zu verbessern. Diese Daten sind nicht personenbeziehbar."
+          "text": "Wir erheben anonymisierte Nutzungsdaten (z.B. gewählter Dialekt, Sitzungsdauer), um die App zu verbessern. Auf unserer Website nutzen wir Umami Analytics, ein datenschutzfreundliches Open-Source-Tool, das ohne Cookies funktioniert und alle Daten anonymisiert erfasst. Diese Daten sind nicht personenbeziehbar."
         },
         "betaEmail": {
           "title": "Beta-Programm (E-Mail)",
@@ -231,7 +231,7 @@
       "thirdParty": {
         "title": "Drittanbieter",
         "text": "Wir nutzen keine Werbenetzwerke und teilen deine Daten nicht mit Dritten zu Marketingzwecken. Für die App-Bereitstellung können folgende Dienste zum Einsatz kommen:",
-        "services": "Apple App Store / Google Play Store (App-Distribution), Schweizer Hosting-Provider (Server-Infrastruktur)"
+        "services": "Apple App Store / Google Play Store (App-Distribution), Schweizer Hosting-Provider (Server-Infrastruktur), Umami Cloud (Website-Analyse, cookiefrei)"
       },
       "rights": {
         "title": "Deine Rechte",
@@ -470,7 +470,7 @@
         },
         "analytics": {
           "title": "Analyse d'utilisation",
-          "text": "Nous collectons des données d'utilisation anonymisées (ex. : dialecte choisi, durée de session) pour améliorer l'app. Ces données ne permettent pas de t'identifier."
+          "text": "Nous collectons des données d'utilisation anonymisées (ex. : dialecte choisi, durée de session) pour améliorer l'app. Sur notre site web, nous utilisons Umami Analytics, un outil open source respectueux de la vie privée, qui fonctionne sans cookies et collecte toutes les données de manière anonyme. Ces données ne permettent pas de t'identifier."
         },
         "betaEmail": {
           "title": "Programme bêta (e-mail)",
@@ -488,7 +488,7 @@
       "thirdParty": {
         "title": "Services tiers",
         "text": "Nous n'utilisons pas de réseaux publicitaires et ne partageons pas tes données avec des tiers à des fins marketing. Pour la distribution de l'app, les services suivants peuvent être utilisés :",
-        "services": "Apple App Store / Google Play Store (distribution de l'app), hébergeur suisse (infrastructure serveur)"
+        "services": "Apple App Store / Google Play Store (distribution de l'app), hébergeur suisse (infrastructure serveur), Umami Cloud (analyse du site web, sans cookies)"
       },
       "rights": {
         "title": "Tes droits",
@@ -727,7 +727,7 @@
         },
         "analytics": {
           "title": "Analisi dell'utilizzo",
-          "text": "Raccogliamo dati di utilizzo anonimi (es. dialetto scelto, durata della sessione) per migliorare l'app. Questi dati non sono riconducibili alla tua persona."
+          "text": "Raccogliamo dati di utilizzo anonimi (es. dialetto scelto, durata della sessione) per migliorare l'app. Sul nostro sito web utilizziamo Umami Analytics, uno strumento open source rispettoso della privacy, che funziona senza cookie e raccoglie tutti i dati in forma anonima. Questi dati non sono riconducibili alla tua persona."
         },
         "betaEmail": {
           "title": "Programma beta (e-mail)",
@@ -745,7 +745,7 @@
       "thirdParty": {
         "title": "Servizi di terze parti",
         "text": "Non utilizziamo reti pubblicitarie e non condividiamo i tuoi dati con terzi per scopi di marketing. Per la distribuzione dell'app possono essere utilizzati i seguenti servizi:",
-        "services": "Apple App Store / Google Play Store (distribuzione app), hosting provider svizzero (infrastruttura server)"
+        "services": "Apple App Store / Google Play Store (distribuzione app), hosting provider svizzero (infrastruttura server), Umami Cloud (analisi del sito web, senza cookie)"
       },
       "rights": {
         "title": "I tuoi diritti",
@@ -984,7 +984,7 @@
         },
         "analytics": {
           "title": "Analisa da l'utilisaziun",
-          "text": "Nus rimnain datas d'utilisaziun anonimisadas (p.ex. dialect tschernì, durada da la sessiun) per meglierar l'app. Questas datas na permettan betg da t'identifitgar."
+          "text": "Nus rimnain datas d'utilisaziun anonimisadas (p.ex. dialect tschernì, durada da la sessiun) per meglierar l'app. Sin nossa pagina d'internet utilisain nus Umami Analytics, in instrument open source che respecta la sfera privata, che funcziuna senza cookies e rimna tuttas datas en moda anonima. Questas datas na permettan betg da t'identifitgar."
         },
         "betaEmail": {
           "title": "Program beta (e-mail)",
@@ -1002,7 +1002,7 @@
       "thirdParty": {
         "title": "Servetschs da terzs",
         "text": "Nus na duvrain betg raits da reclama e na partain betg tias datas cun terzs per intent da marketing. Per la distribuziun da l'app pon vegnir utilisads ils suandants servetschs:",
-        "services": "Apple App Store / Google Play Store (distribuziun da l'app), hosting provider svizzer (infrastructura da servers)"
+        "services": "Apple App Store / Google Play Store (distribuziun da l'app), hosting provider svizzer (infrastructura da servers), Umami Cloud (analisa da la pagina d'internet, senza cookies)"
       },
       "rights": {
         "title": "Tes dretgs",
@@ -1241,7 +1241,7 @@
         },
         "analytics": {
           "title": "Usage Analytics",
-          "text": "We collect anonymized usage data (e.g., selected dialect, session duration) to improve the app. This data cannot be traced back to you."
+          "text": "We collect anonymized usage data (e.g., selected dialect, session duration) to improve the app. On our website, we use Umami Analytics, a privacy-friendly open-source tool that works without cookies and collects all data anonymously. This data cannot be traced back to you."
         },
         "betaEmail": {
           "title": "Beta Program (Email)",
@@ -1259,7 +1259,7 @@
       "thirdParty": {
         "title": "Third-Party Services",
         "text": "We do not use advertising networks and do not share your data with third parties for marketing purposes. The following services may be used for app distribution:",
-        "services": "Apple App Store / Google Play Store (app distribution), Swiss hosting provider (server infrastructure)"
+        "services": "Apple App Store / Google Play Store (app distribution), Swiss hosting provider (server infrastructure), Umami Cloud (website analytics, cookie-free)"
       },
       "rights": {
         "title": "Your Rights",
