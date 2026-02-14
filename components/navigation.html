@@ -1,6 +1,6 @@
 <!-- Minimal Header with Grailed-style Logo Scramble + Language Switcher -->
 <header class="minimal-header" id="minimalHeader" role="banner">
-    <div class="brand-container">
+    <a href="/" class="brand-container" aria-label="SwissKeyboard – Home">
         <div class="brand-logo">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="-35 -35 70 70" role="img" aria-label="SwissKeyboard logo">
                 <!-- Edelweiss Logo - Geometric concentric circles -->
@@ -46,7 +46,7 @@
             </svg>
         </div>
         <div class="brand-mark" id="brandMark" data-text="SwissKeyboard" data-i18n="nav.brand">SwissKeyboard</div>
-    </div>
+    </a>
     <nav class="language-switcher" id="language-switcher" aria-label="Language selection"></nav>
 </header>
 
@@ -102,6 +102,8 @@
     align-items: stretch;
     gap: 0;
     pointer-events: auto;
+    text-decoration: none;
+    color: inherit;
 }
 
 .brand-logo {
@@ -133,7 +135,7 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #1a1a1a;
-    cursor: default;
+    cursor: pointer;
     transition: all 0.3s ease;
     /* Match page aesthetic */
     background: #fff;
